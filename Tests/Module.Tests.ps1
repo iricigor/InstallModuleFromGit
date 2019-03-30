@@ -26,7 +26,7 @@ Describe "Fake-Test" {
 
 
 #
-# Module should import six functions
+# Module should import two functions
 #
 
 
@@ -38,6 +38,23 @@ Describe 'Proper Declarations' {
         # cache management
         Get-Command Get-GitModule -ea 0 | Should -Not -Be $Null
         Get-Command Install-GitModule -ea 0 | Should -Not -Be $Null
+    }
+
+}
+
+
+#
+# Basic tests, this should be added to individual files
+#
+
+Describe 'Basic testing' {
+
+    It 'Get-GitModule does not throw an exception' {
+        {Get-GitModule 'https://github.com/iricigor/FIFA2018'} | Should -Not -Throw
+    }
+
+    It 'Install-GitModule does not throw an exception' {
+        {Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force} | Should -Not -Throw
     }
 
 }
