@@ -43,9 +43,12 @@ function Get-GitModule {
             if (!(Test-Path $tempDir)) {
                 Write-Verbose -Message "$(Get-Date -f T)   creating directory $tempDir"
                 New-Item $tempDir -ItemType Directory -Force
+            } else {
+                Write-Verbose -Message "$(Get-Date -f T)   checking content of directory $tempDir"
+                Get-ChildItem $tempDir -Force
             }
             Write-Verbose -Message "$(Get-Date -f T)   cloning repository to $tempDir"
-            git clone $P1 --branch $Branch --single-branch $tempDir 2>&1 | Out-Null
+            git clone $P1 --branch $Branch --single-branch $tempDir #2>&1 | Out-Null
             $psd1 = (Get-ChildItem $tempDir -Include *.psd1 -Recurse).FullName
 
             if($psd1 -is [array]) {
