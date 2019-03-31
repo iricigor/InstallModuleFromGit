@@ -40,6 +40,10 @@ function Get-GitModule {
 
             $ModuleName = ($P1 -split '/')[-1]
             $tempDir = Join-Path $tmpRoot $ModuleName
+            if (!(Test-Path $tempDir)) {
+                Write-Verbose -Message "$(Get-Date -f T)   creating directory $tempDir"
+                New-Item $tempDir -ItemType Directory -Force
+            }
             Write-Verbose -Message "$(Get-Date -f T)   cloning repository to $tempDir"
             git clone $P1 --branch $Branch --single-branch $tempDir 2>&1 | Out-Null
             $psd1 = (Get-ChildItem $tempDir -Include *.psd1 -Recurse).FullName
