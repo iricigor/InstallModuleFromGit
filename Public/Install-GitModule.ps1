@@ -40,6 +40,8 @@ function Install-GitModule {
         foreach ($P1 in $ProjectUri) {
 
             Write-Verbose -Message "$(Get-Date -f T)   processing $P1"
+            Write-Verbose -Message "$(Get-Date -f T)   count $($ModuleInfo.Count)"
+            Write-Verbose ("Names: " + ($ModuleInfo.Name -join ','))
 
             $ModuleInfo = Get-GitModule -ProjectUri $P1 -KeepTempCopy
             if (!$ModuleInfo -or ($ModuleInfo.Count -gt 1)) {
