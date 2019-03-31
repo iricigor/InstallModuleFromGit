@@ -50,13 +50,16 @@ Describe 'Proper Declarations' {
 Describe 'Basic testing' {
 
     It 'Get-GitModule does not throw an exception' {
-        #{Get-GitModule 'https://github.com/iricigor/FIFA2018'} | Should -Not -Throw
+        {Get-GitModule 'https://github.com/iricigor/FIFA2018'} | Should -Not -Throw
         Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose | Should -Not -Be $null
+        (Get-GitModule 'https://github.com/iricigor/FIFA2018').Name | Should -Be 'FIFA2018'
     }
 
     It 'Install-GitModule does not throw an exception' {
-        #{Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force} | Should -Not -Throw
+        {Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force} | Should -Not -Throw
         Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force -Verbose | Should -Not -Be $null
+        (Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force).Name | Should -Be 'psaptgetupdate'
+        Get-Module 'psaptgetupdate' -ListAvailable | Should -Not -Be $null
     }
 
 }
