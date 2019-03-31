@@ -56,7 +56,7 @@ Describe 'Basic testing' {
     }
 
     It 'Get-GitModule returns some value' {
-        Get-GitModule $moduleURL -Verbose | Should -Not -Be $null
+        Get-GitModule $moduleURL | Should -Not -Be $null
     }
 
     It 'Get-GitModule returns proper value' {
@@ -70,7 +70,7 @@ Describe 'Basic testing' {
     }
 
     It 'Install-GitModule returns some value' {
-        Install-GitModule $moduleURL -Force -Verbose | Should -Not -Be $null
+        Install-GitModule $moduleURL -Force | Should -Not -Be $null
     }
 
     It 'Install-GitModule returns proper value' {

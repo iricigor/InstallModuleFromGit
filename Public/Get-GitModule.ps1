@@ -43,9 +43,9 @@ function Get-GitModule {
             if (!(Test-Path $tempDir)) {
                 Write-Verbose -Message "$(Get-Date -f T)   creating directory $tempDir"
                 New-Item $tempDir -ItemType Directory -Force | Out-Null
-            } else {
-                Write-Verbose -Message "$(Get-Date -f T)   checking content of directory $tempDir"
-                Get-ChildItem $tempDir -Force
+            } elseif (Get-ChildItem $tempDir -Force) {
+                Write-Verbose -Message "$(Get-Date -f T)   deleting content of temp directory $tempDir"
+                Remove-Item (Join-Path $tempDir '*') -Recurse -Force
             }
             Write-Verbose -Message "$(Get-Date -f T)   cloning repository to $tempDir"
             git clone $P1 --branch $Branch --single-branch $tempDir --quiet
