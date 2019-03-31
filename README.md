@@ -24,7 +24,7 @@ _(not yet available)_
 ```PowerShell
 C:> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
 
-C:> Install-GitModule 'https://github.com/iricigor/psaptgetupdate' | Select -Expand Name | Import-Module
+C:> Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force | Select -Expand Name | Import-Module
 ```
 
 ## Commands
