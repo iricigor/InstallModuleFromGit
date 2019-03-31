@@ -6,8 +6,10 @@
 # Display diagnostic information
 #
 
-$PSVersionTable
-Get-ChildItem Env:\
+if ($env:TF_BUILD) {
+    $PSVersionTable
+    Get-ChildItem Env:\    
+}
 
 #
 # Install Pester v4, if needed
