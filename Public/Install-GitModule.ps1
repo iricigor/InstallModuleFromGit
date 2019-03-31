@@ -44,12 +44,7 @@ function Install-GitModule {
             Write-Verbose ("Names: " + ($ModuleInfo.Name -join ','))
 
             $ModuleInfo = Get-GitModule -ProjectUri $P1 -KeepTempCopy
-            if (!$ModuleInfo -or ($ModuleInfo.Count -gt 1)) {
-                Write-Verbose ("Count: " + ($ModuleInfo.Count))
-                Write-Verbose ("Names: " + ($ModuleInfo.Name -join ','))
-                Write-Error "$FunctionName cannot identify unique module"
-                continue
-            } # we have the error in get-gitmodule
+            if (!$ModuleInfo -or ($ModuleInfo.Count -gt 1)) {continue} # we have the error in get-gitmodule
             if (!$ModuleInfo.Root) {Write-Warning -Message "$FunctionName installing module with manifest not located in module root directory"}
 
             # check target directory
