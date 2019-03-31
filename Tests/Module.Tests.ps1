@@ -49,19 +49,37 @@ Describe 'Proper Declarations' {
 
 Describe 'Basic testing' {
 
+    $moduleName = 'FIFA2018'
+    $moduleURL = 'https://github.com/iricigor/' + $moduleName
     It 'Get-GitModule does not throw an exception' {
-        {Get-GitModule 'https://github.com/iricigor/FIFA2018'} | Should -Not -Throw
-        Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose | Should -Not -Be $null
-        (Get-GitModule 'https://github.com/iricigor/FIFA2018').Name | Should -Be 'FIFA2018'
+        {Get-GitModule $moduleURL} | Should -Not -Throw
     }
 
+    It 'Get-GitModule returns some value' {
+        Get-GitModule $moduleURL -Verbose | Should -Not -Be $null
+    }
+
+    It 'Get-GitModule returns proper value' {
+        (Get-GitModule $moduleURL).Name | Should -Be $moduleName
+    }
+    
+    $moduleName = 'psaptgetupdate'
+    $moduleURL = 'https://github.com/iricigor/' + $moduleName
     It 'Install-GitModule does not throw an exception' {
-        {Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force} | Should -Not -Throw
-        Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force -Verbose | Should -Not -Be $null
-        (Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Force).Name | Should -Be 'psaptgetupdate'
-        Get-Module 'psaptgetupdate' -ListAvailable | Should -Not -Be $null
+        {Install-GitModule $moduleURL -Force} | Should -Not -Throw
     }
 
+    It 'Install-GitModule returns some value' {
+        Install-GitModule $moduleURL -Force -Verbose | Should -Not -Be $null
+    }
+
+    It 'Install-GitModule returns proper value' {
+        (Install-GitModule $moduleURL -Force).Name | Should -Be $moduleName
+    }
+
+    It 'Install-GitModule really installs module' {
+        Get-Module $moduleName -ListAvailable | Should -Not -Be $null
+    }
 }
 
 
