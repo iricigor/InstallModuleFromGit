@@ -24,7 +24,11 @@ function Get-GitModule {
             # TODO: Add more details
         }
 
-        $tmpRoot = [System.IO.Path]::GetTempPath()
+        if ($env:AGENT_TEMPDIRECTORY) {
+            $tmpRoot = $env:AGENT_TEMPDIRECTORY    
+        } else {
+            $tmpRoot = [System.IO.Path]::GetTempPath()
+        }        
 
     }
 
