@@ -5,9 +5,13 @@
 :bowtie: This PowerShell module will be help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/).
 All you need to know is a URL of the git repository and the module will take care of everything else.
 
+Module is compatible both with Windows and Linux versions of PowerShell.
+
 ## Prerequisites
 
-:exclamation: **Git** client must be installed and available on path. If you don't have it, you can get it for example from [git-scm.com](https://git-scm.com/downloads).
+:exclamation: **Git** client must be installed and available on path.
+If you don't have it, you can get it for example from [git-scm.com](https://git-scm.com/downloads).
+You can check if you have it by running `Get-Command git` in your PowerShell.
 
 ## Installation
 
