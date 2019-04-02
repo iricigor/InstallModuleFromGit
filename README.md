@@ -1,6 +1,8 @@
+<img align="right" width="203" height="294" src="InstallGitModule.logo.png">
+
 # InstallGitModule
 
-Helps installing modules directly from GitHub or Azure DevOps
+This PowerShell module will be help you to easily instal modules directly from GitHub or Azure DevOps.
 
 ## Prerequisites
 
