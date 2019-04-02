@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpInfo xmlns="http://schemas.microsoft.com/powershell/help/2010/05">
-  <HelpContentURI>{{Please enter FwLink manually}}</HelpContentURI>
+  <HelpContentURI>https://github.com/iricigor/InstallGitModule/raw/help-files/cab/</HelpContentURI>
   <SupportedUICultures>
     <UICulture>
       <UICultureName>en-US</UICultureName>
-      <UICultureVersion>{{Please enter version of help manually (X.X.X.X) format}}</UICultureVersion>
+      <UICultureVersion>1.0.0.0</UICultureVersion>
     </UICulture>
   </SupportedUICultures>
 </HelpInfo>
