@@ -1,6 +1,6 @@
 function Get-GitModule {
 
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri='https://github.com/iricigor/InstallGitModule/raw/master/Docs/Get-GitModule.ps1')]
 
     param (
         

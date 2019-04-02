@@ -2,12 +2,12 @@
 
 # Install Git Module
 
-:bowtie: This PowerShell module will be help you to easily instal PowerShell modules directly from Azure DevOps (aka VSTS) or GitHub.
+:bowtie: This PowerShell module will be help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/).
 All you need to know is a URL of the git repository and the module will take care of everything else.
 
 ## Prerequisites
 
-* :exclamation: **git** - Git must be installed and available on path. If you don't have it, you can get it for example from [git-scm.com](https://git-scm.com/downloads).
+:exclamation: **Git** client must be installed and available on path. If you don't have it, you can get it for example from [git-scm.com](https://git-scm.com/downloads).
 
 ## Installation
 
@@ -30,10 +30,10 @@ Install-GitModule https://github.com/iricigor/InstallGitModule
 
 ```PowerShell
 # Check for module existence and its version
-C:> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
+PS:\> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
 
 # Download and import module in one line
-C:> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Import-Module
+PS:\> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Import-Module
 ```
 
 ## Commands

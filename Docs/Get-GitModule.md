@@ -22,23 +22,45 @@ Get-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-KeepTempCopy] [<Comm
 This cmdlet will check for existence of PowerShell module in given repository and return its version.
 You can also specify desired git branch.
 
-Cmdlet requires `git` tool to work.
-It will download (`git clone`) specified repository to temporary repository and analyze it.
+Cmdlet requires `git` client tool to work. It will download (`git clone`) specified repository to temporary directory and analyze it.
 By default, it will delete this temporary copy, but if needed, it can be kept.
+
+Cmdlet searches for module manifest (*.psd1) file only. Modules with only *.psm1 files are not supported at the moment.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
+
+Name    : FIFA2018
+Version : 0.3.46
+Path    :
+Root    : True
+Git     : https://github.com/iricigor/FIFA2018
 ```
 
-{{ Add example description here }}
+This cmdlet will check for existence of PowerShell module in [given repository](https://github.com/iricigor/FIFA2018') and return its version _(currently 0.3.46)_.
+
+### Example 2
+
+```powershell
+PS C:\> $M = Find-Module FIFA2018; $M.Version; ($M | Get-GitModule).Version
+
+0.2.45
+0.3.46
+```
+
+This illustrates how you can check latest versions of the module both in PSGallery and in its repository.
+Notice that cmdlet `Get-GitModule` accepts value for `-ProjectURI` via pipeline.
 
 ## PARAMETERS
 
 ### -Branch
-{{Fill Branch Description}}
+
+Optional parameter that specifies which branch should be cloned.
+If omitted, `master` branch will be used.
 
 ```yaml
 Type: String
@@ -53,7 +75,12 @@ Accept wildcard characters: False
 ```
 
 ### -KeepTempCopy
-{{Fill KeepTempCopy Description}}
+
+Cmdlet will download (`git clone`) specified repository to temporary directory and analyze it.
+By default, it will delete this temporary copy. If needed use this switch parameter to keep this temporary copy.
+You can check `Path` attribute of return value to see exact path where temporary copy is located.
+
+This is used for example in `Install-GitModule` to directly install module from this temporary copy.
 
 ```yaml
 Type: SwitchParameter
@@ -68,7 +95,12 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectUri
-{{Fill ProjectUri Description}}
+
+Mandatory parameter specifying URL or the repository. Multiple values are supported.
+Parameter is passed to `git` client, so whatever works there is good value.
+For example, in GitHub URLs you can specify parameter both with or without `.git` at the end of URL.
+
+You can pass this parameter also via pipeline, for example via `Find-Module` built-in cmdlet.
 
 ```yaml
 Type: String[]
