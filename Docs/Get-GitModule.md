@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-GitModule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+This cmdlet will check for existence of PowerShell module in given repository and return its version.
 
 ## SYNTAX
 
@@ -17,7 +18,13 @@ Get-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-KeepTempCopy] [<Comm
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+This cmdlet will check for existence of PowerShell module in given repository and return its version.
+You can also specify desired git branch.
+
+Cmdlet requires `git` tool to work.
+It will download (`git clone`) specified repository to temporary repository and analyze it.
+By default, it will delete this temporary copy, but if needed, it can be kept.
 
 ## EXAMPLES
 

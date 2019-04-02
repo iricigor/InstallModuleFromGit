@@ -1,4 +1,4 @@
-<img align="right" width="203" height="294" src="InstallGitModule.logo.png">
+<img align="right" width="203" height="294" src="img/InstallGitModule.logo.png">
 
 # Install Git Module
 
@@ -29,7 +29,7 @@ Install-GitModule https://github.com/iricigor/InstallGitModule
 ## Examples
 
 ```PowerShell
-# Check for module existance and its version
+# Check for module existence and its version
 C:> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
 
 # Download and import module in one line
@@ -48,7 +48,7 @@ Installs PowerShell module to user's default install folder. More info [here](/D
 
 ## Tests
 
-:smirk: So far the module have very very basic testing, but it is doing that against two platforms - Linux and Windows.
+:smirk: So far the module have very very basic testing, but it is doing that against two platforms - Linux and Windows. Tests results are available on Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
 Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallGitModule%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
 
