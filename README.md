@@ -30,10 +30,10 @@ Install-GitModule https://github.com/iricigor/InstallGitModule
 
 ```PowerShell
 # Check for module existence and its version
-C:> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
+PS:\> Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
 
 # Download and import module in one line
-C:> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Import-Module
+PS:\> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Import-Module
 ```
 
 ## Commands
