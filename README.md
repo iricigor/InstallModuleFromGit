@@ -2,10 +2,10 @@
 
 # Install Git Module
 
-:bowtie: This PowerShell module will be help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/).
+:bowtie: This PowerShell module will help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/).
 All you need to know is a URL of the git repository and the module will take care of everything else.
 
-Module is compatible both with Windows and Linux versions of PowerShell.
+The module is compatible both with **Linux** and **Windows** versions of PowerShell _(Windows PowerShell 5 or PowerShell Core 6)_.
 
 ## Prerequisites
 
@@ -52,13 +52,13 @@ Installs PowerShell module to user's default install folder. More info [here](/D
 
 ## Tests
 
-:smirk: So far the module have very very basic testing, but it is doing that against two platforms - Linux and Windows. Tests results are available on Tests tab ([example here](/img/TestResults-AzureDevops.png)).
+:smirk: So far the module has very very basic testing, but it is doing that against two platforms - Linux and Windows. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
 Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallGitModule%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
 
 Linux build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallGitModule%20-%20Linux%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
 
-_Click on images to see details about latest build runs._
+_Click on images to see details about the latest build runs._
 
 ## Similar PowerShell modules
 
