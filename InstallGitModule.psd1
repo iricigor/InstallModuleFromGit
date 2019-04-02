@@ -114,7 +114,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-HelpInfoURI = 'https://github.com/iricigor/InstallGitModule/raw/master/Docs/'
+HelpInfoURI = 'https://github.com/iricigor/InstallGitModule/raw/help-files/cab/'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''

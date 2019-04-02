@@ -8,8 +8,7 @@ schema: 2.0.0
 # Get-GitModule
 
 ## SYNOPSIS
-
-This cmdlet will check for existence of PowerShell module in given repository and return its version.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -18,13 +17,7 @@ Get-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-KeepTempCopy] [<Comm
 ```
 
 ## DESCRIPTION
-
-This cmdlet will check for existence of PowerShell module in given repository and return its version.
-You can also specify desired git branch.
-
-Cmdlet requires `git` tool to work.
-It will download (`git clone`) specified repository to temporary repository and analyze it.
-By default, it will delete this temporary copy, but if needed, it can be kept.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
@@ -83,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
