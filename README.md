@@ -11,6 +11,10 @@ All you need to know is a URL of the git repository and the module will take car
 
 ## Installation
 
+### from PowerShell gallery
+
+:dash: _(not yet available)_
+
 ### clone GitHub repository
 
 ```PowerShell
@@ -21,10 +25,6 @@ Import-Module ./InstallGitModule/InstallGitModule.psd1
 # after you install this module you can do it like this
 Install-GitModule https://github.com/iricigor/InstallGitModule
 ```
-
-### from PowerShell gallery
-
-:dash: _(not yet available)_
 
 ## Examples
 
