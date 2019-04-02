@@ -6,11 +6,12 @@
       <command:verb>Get</command:verb>
       <command:noun>GitModule</command:noun>
       <maml:description>
-        <maml:para>{{Fill in the Synopsis}}</maml:para>
+        <maml:para>This cmdlet will check for existence of PowerShell module in given repository and return its version.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{Fill in the Description}}</maml:para>
+      <maml:para>This cmdlet will check for existence of PowerShell module in given repository and return its version. You can also specify desired git branch.</maml:para>
+      <maml:para>Cmdlet requires `git` tool to work. It will download (`git clone`) specified repository to temporary repository and analyze it. By default, it will delete this temporary copy, but if needed, it can be kept.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
