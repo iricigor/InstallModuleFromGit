@@ -1,7 +1,7 @@
 ---
 Module Name: InstallGitModule
 Module Guid: d6a1577c-e3b5-48f2-a698-f08ab4865a58
-Download Help Link: https://github.com/iricigor/InstallGitModule/raw/help-files/cab/
+Download Help Link: https://github.com/iricigor/InstallGitModule/raw/master/cab/
 Help Version: 1.0.0.0
 Locale: en-US
 ---
