@@ -24,7 +24,7 @@ if (!(Get-Module Pester -List | where Version -ge 4.0.0)) {
 }
 
 if (!(Get-Module PlatyPS -List | where Version -ge 0.14.0)) {
-    Write-Host "`nInstalling Pester"
+    Write-Host "`nInstalling PlatyPS"
     Install-Module -Name PlatyPS -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
     Get-Module PlatyPS -List
     Import-Module PlatyPS
