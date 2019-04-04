@@ -100,7 +100,11 @@ Describe 'Proper Documentation' {
         # test it
         $diff = git diff --ignore-space-change .\Docs .\en-US
         Pop-Location
-		$diff | Should -Be $null
+        $diff | Should -Be $null
+        if ($diff) {
+            "Git diff output"
+            $diff
+        }
 	}
 }
 
@@ -113,5 +117,9 @@ Describe 'ScriptAnalyzer Tests' {
         # Check code
         $SA = Invoke-ScriptAnalyzer -Path $root -Recurse
         $SA | where Severity -eq 'Error' | Should -Be $null
+        if ($env:TF_BUILD -and $SA) {
+            "Script Analyzer findings"
+            $SA
+        }
     }
 }
