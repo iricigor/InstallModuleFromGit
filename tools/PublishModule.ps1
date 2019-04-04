@@ -1,9 +1,9 @@
 # Script should be executed manually by developer
-$ModuleName = 'InstallGitModule'
+$ModuleName = 'InstallModuleFromGit'
 
 # check running folder
 if (!(Test-Path "..\$ModuleName\$ModuleName.psd1")) {
-    throw "We are not in correct folder"
+    throw "We are not in correct folder, please run this tool as .\tools\PublishModule.ps1"
 } else {
     "Checking module $(Resolve-Path "..\$ModuleName\$ModuleName.psd1")"
 }

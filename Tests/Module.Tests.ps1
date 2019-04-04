@@ -8,7 +8,7 @@
 # Import module
 #
 
-$ModuleName = 'InstallGitModule'
+$ModuleName = 'InstallModuleFromGit'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path # test folder
 $root = (get-item $here).Parent.FullName                # module root folder
 Import-Module (Join-Path $root "$ModuleName.psm1") -Force
@@ -98,9 +98,9 @@ Describe 'Proper Documentation' {
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
 
         # test it
-        $diff = git diff .\Docs .\en-US
+        $diff = git diff --ignore-space-change .\Docs .\en-US
         Pop-Location
-		$diff | Should -Be $null
+        $diff | Should -Be $null
 	}
 }
 
