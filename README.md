@@ -62,6 +62,6 @@ _Click on images to see details about the latest build runs._
 
 ## Similar PowerShell modules
 
-:mega: [dfinke](https://github.com/dfinke)/[InstallModuleFromGitHub](https://github.com/dfinke/InstallModuleFromGitHub)
-- ++ does not require git client
-- -- works only with GitHub
+- :mega: [dfinke](https://github.com/dfinke)/[InstallModuleFromGitHub](https://github.com/dfinke/InstallModuleFromGitHub)
+  - (pluses) does not require git client
+  - (minuses) works only with GitHub

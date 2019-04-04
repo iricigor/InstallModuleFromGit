@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-GitModule</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>GitModule</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet will check for existence of PowerShell module in given repository and return its version.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet will check for existence of PowerShell module in given repository and return its version. You can also specify desired git branch.</maml:para>
+      <maml:para>Cmdlet requires `git` client tool to work. It will download (`git clone`) specified repository to temporary directory and analyze it. By default, it will delete this temporary copy, but if needed, it can be kept.</maml:para>
+      <maml:para>Cmdlet searches for module manifest ( .psd1) file only. Modules with only .psm1 files are not supported at the moment.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-GitModule</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>ProjectUri</maml:name>
+          <maml:Description>
+            <maml:para>Mandatory parameter specifying URL or the repository. Multiple values are supported. Parameter is passed to `git` client, so whatever works there is good value. For example, in GitHub URLs you can specify parameter both with or without `.git` at the end of URL.</maml:para>
+            <maml:para>You can pass this parameter also via pipeline, for example via `Find-Module` built-in cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Branch</maml:name>
+          <maml:Description>
+            <maml:para>Optional parameter that specifies which branch should be cloned. If omitted, `master` branch will be used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>KeepTempCopy</maml:name>
+          <maml:Description>
+            <maml:para>Cmdlet will download (`git clone`) specified repository to temporary directory and analyze it. By default, it will delete this temporary copy. If needed use this switch parameter to keep this temporary copy. You can check `Path` attribute of return value to see exact path where temporary copy is located.</maml:para>
+            <maml:para>This is used for example in `Install-GitModule` to directly install module from this temporary copy.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Branch</maml:name>
+        <maml:Description>
+          <maml:para>Optional parameter that specifies which branch should be cloned. If omitted, `master` branch will be used.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>KeepTempCopy</maml:name>
+        <maml:Description>
+          <maml:para>Cmdlet will download (`git clone`) specified repository to temporary directory and analyze it. By default, it will delete this temporary copy. If needed use this switch parameter to keep this temporary copy. You can check `Path` attribute of return value to see exact path where temporary copy is located.</maml:para>
+          <maml:para>This is used for example in `Install-GitModule` to directly install module from this temporary copy.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>ProjectUri</maml:name>
+        <maml:Description>
+          <maml:para>Mandatory parameter specifying URL or the repository. Multiple values are supported. Parameter is passed to `git` client, so whatever works there is good value. For example, in GitHub URLs you can specify parameter both with or without `.git` at the end of URL.</maml:para>
+          <maml:para>You can pass this parameter also via pipeline, for example via `Find-Module` built-in cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-GitModule 'https://github.com/iricigor/FIFA2018' -Verbose
+
+Name    : FIFA2018
+Version : 0.3.46
+Path    :
+Root    : True
+Git     : https://github.com/iricigor/FIFA2018</dev:code>
+        <dev:remarks>
+          <maml:para>This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version _(currently 0.3.46)_.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $M = Find-Module FIFA2018; $M.Version; ($M | Get-GitModule).Version
+
+0.2.45
+0.3.46</dev:code>
+        <dev:remarks>
+          <maml:para>This illustrates how you can check latest versions of the module both in PSGallery and in its repository. Notice that cmdlet `Get-GitModule` accepts value for `-ProjectURI` via pipeline.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Install-GitModule</command:name>
+      <command:verb>Install</command:verb>
+      <command:noun>GitModule</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet installs PowerShell module specified by its git repository URL to user's default install directory.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet installs PowerShell module specified by its git repository URL to user's default install folder.</maml:para>
+      <maml:para>You can also specify desired git branch.</maml:para>
+      <maml:para>Cmdlet internally uses `Get-GitModule` cmdlet, so it requires `git` client tool to work. Cmdlet will actually download specified repository to user's default install directory for PowerShell modules.</maml:para>
+      <maml:para>It does not support functionality `-Scope AllUsers`, but it is possible to specify `-DestinationPath` argument which will provide the same result.</maml:para>
+      <maml:para>Cmdlet searches for module manifest ( .psd1) file only. Modules with only .psm1 files are not supported at the moment.</maml:para>
+      <maml:para>Note that this will not import module, only install it (the same as built-in cmdlet `Install-Module`). You can rely on PowerShell's automatic import of modules into user session when needed.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Install-GitModule</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>ProjectUri</maml:name>
+          <maml:Description>
+            <maml:para>Mandatory parameter specifying URL or the repository. Multiple values are supported. Parameter is passed to `git` client, so whatever works there is good value. For example, in GitHub URLs you can specify parameter both with or without `.git` at the end of URL.</maml:para>
+            <maml:para>You can pass this parameter also via pipeline, for example via `Find-Module` built-in cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Branch</maml:name>
+          <maml:Description>
+            <maml:para>Optional parameter that specifies which branch should be cloned. If omitted, `master` branch will be used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>DestinationPath</maml:name>
+          <maml:Description>
+            <maml:para>If you have a specific setup, you can override default install location with this parameter. As cmdlet always installs to user specific location, this can be useful to perform system wide installation (requires also elevated prompt).</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:Description>
+            <maml:para>If the module with specified name and the version exists, installation will fail. You can override this behaviour with `-Force` switch.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Branch</maml:name>
+        <maml:Description>
+          <maml:para>Optional parameter that specifies which branch should be cloned. If omitted, `master` branch will be used.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>DestinationPath</maml:name>
+        <maml:Description>
+          <maml:para>If you have a specific setup, you can override default install location with this parameter. As cmdlet always installs to user specific location, this can be useful to perform system wide installation (requires also elevated prompt).</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>If the module with specified name and the version exists, installation will fail. You can override this behaviour with `-Force` switch.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>ProjectUri</maml:name>
+        <maml:Description>
+          <maml:para>Mandatory parameter specifying URL or the repository. Multiple values are supported. Parameter is passed to `git` client, so whatever works there is good value. For example, in GitHub URLs you can specify parameter both with or without `.git` at the end of URL.</maml:para>
+          <maml:para>You can pass this parameter also via pipeline, for example via `Find-Module` built-in cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Verbose</dev:code>
+        <dev:remarks>
+          <maml:para>This cmdlet will install PowerShell module from given repository (https://github.com/iricigor/psaptgetupdate').</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+</helpItems>
