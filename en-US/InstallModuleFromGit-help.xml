@@ -132,7 +132,7 @@ Path    :
 Root    : True
 Git     : https://github.com/iricigor/FIFA2018</dev:code>
         <dev:remarks>
-          <maml:para>This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version _(currently 0.3.46)_.</maml:para>
+          <maml:para>This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46) .</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
