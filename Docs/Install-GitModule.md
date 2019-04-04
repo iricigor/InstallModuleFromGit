@@ -1,6 +1,6 @@
 ---
-external help file: InstallGitModule-help.xml
-Module Name: InstallGitModule
+external help file: InstallModuleFromGit-help.xml
+Module Name: InstallModuleFromGit
 online version:
 schema: 2.0.0
 ---

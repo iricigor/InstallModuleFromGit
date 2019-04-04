@@ -1,8 +1,8 @@
-<img align="right" width="203" height="294" src="img/InstallGitModule.logo.png">
+<img align="right" width="203" height="294" src="img/InstallModuleFromGit.logo.png">
 
-# Install Git Module
+# Install Module from Git
 
-:bowtie: This PowerShell module will help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/).
+:bowtie: This PowerShell module will help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/) or any other git repository.
 All you need to know is a URL of the git repository and the module will take care of everything else.
 
 The module is compatible both with **Linux** and **Windows** versions of PowerShell _(Windows PowerShell 5 or PowerShell Core 6)_.
@@ -22,12 +22,12 @@ You can check if you have it by running `Get-Command git` in your PowerShell.
 ### clone GitHub repository
 
 ```PowerShell
-git clone https://github.com/iricigor/InstallGitModule
-Import-Module ./InstallGitModule/InstallGitModule.psd1
+git clone https://github.com/iricigor/InstallModuleFromGit
+Import-Module ./InstallModuleFromGit/InstallModuleFromGit.psd1
 # and this is the last time you will be doing it like this
 
 # after you install this module you can do it like this
-Install-GitModule https://github.com/iricigor/InstallGitModule
+Install-GitModule https://github.com/iricigor/InstallModuleFromGit
 ```
 
 ## Examples
@@ -52,14 +52,16 @@ Installs PowerShell module to user's default install folder. More info [here](/D
 
 ## Tests
 
-:smirk: So far the module has very very basic testing, but it is doing that against two platforms - Linux and Windows. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
+:smirk: So far the module has a basic testing only, but it is doing that against two platforms - Linux and Windows. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
-Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallGitModule%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
+Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallModuleFromGit%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
 
-Linux build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallGitModule%20-%20Linux%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
+Linux build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallModuleFromGit%20-%20Linux%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
 
 _Click on images to see details about the latest build runs._
 
 ## Similar PowerShell modules
 
 :mega: [dfinke](https://github.com/dfinke)/[InstallModuleFromGitHub](https://github.com/dfinke/InstallModuleFromGitHub)
+- ++ does not require git client
+- -- works only with GitHub

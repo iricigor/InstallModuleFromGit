@@ -1,7 +1,7 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost','')]
 param()
 
-$ModName = 'InstallGitModule'
+$ModName = 'InstallModuleFromGit'
 Get-Module $ModName | Remove-Module -Force
 
 Write-Host "`n`n$ModName module import starting`n" -ForegroundColor Cyan

@@ -8,7 +8,7 @@
 # Import module
 #
 
-$ModuleName = 'InstallGitModule'
+$ModuleName = 'InstallModuleFromGit'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path # test folder
 $root = (get-item $here).Parent.FullName                # module root folder
 Import-Module (Join-Path $root "$ModuleName.psm1") -Force
