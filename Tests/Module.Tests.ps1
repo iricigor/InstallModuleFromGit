@@ -98,7 +98,7 @@ Describe 'Proper Documentation' {
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
 
         # test it
-        $diff = git diff .\Docs .\en-US --ignore-space-change
+        $diff = git diff --ignore-space-change .\Docs .\en-US
         Pop-Location
 		$diff | Should -Be $null
 	}
