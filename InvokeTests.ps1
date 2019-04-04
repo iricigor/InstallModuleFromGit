@@ -2,6 +2,15 @@
 # Script which invokes tests inside of Azure DevOps Pipelines
 #
 
+function InstallModule ([string]$Name,[version]$Version){
+    if (!(Get-Module $Name -List | where Version -ge $Version)) {
+        Write-Host "Installing $Name"
+        Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
+        Import-Module $Name
+    }
+    Get-Module $Name -List
+}
+
 #
 # Display diagnostic information
 #
@@ -16,19 +25,9 @@ if ($env:TF_BUILD) {
 # Install Pester and Platy, if needed
 #
 
-if (!(Get-Module Pester -List | where Version -ge 4.0.0)) {
-    Write-Host "`nInstalling Pester"
-    Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
-    Get-Module Pester -List
-    Import-Module Pester
-}
-
-if (!(Get-Module PlatyPS -List | where Version -ge 0.14.0)) {
-    Write-Host "`nInstalling PlatyPS"
-    Install-Module -Name PlatyPS -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
-    Get-Module PlatyPS -List
-    Import-Module PlatyPS
-}
+InstallModule Pester '4.0.0'
+InstallModule PlatyPS '0.14.0'
+InstallModule PSScriptAnalyzer '1.17.0'
 
 
 #
