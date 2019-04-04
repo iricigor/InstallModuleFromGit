@@ -13,7 +13,7 @@ if ($env:TF_BUILD) {
 }
 
 #
-# Install Pester v4, if needed
+# Install Pester and Platy, if needed
 #
 
 if (!(Get-Module Pester -List | where Version -ge 4.0.0)) {
@@ -21,6 +21,13 @@ if (!(Get-Module Pester -List | where Version -ge 4.0.0)) {
     Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
     Get-Module Pester -List
     Import-Module Pester
+}
+
+if (!(Get-Module PlatyPS -List | where Version -ge 0.14.0)) {
+    Write-Host "`nInstalling Pester"
+    Install-Module -Name PlatyPS -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
+    Get-Module PlatyPS -List
+    Import-Module PlatyPS
 }
 
 
