@@ -9,7 +9,7 @@
 if ($env:TF_BUILD) {
     $PSVersionTable
     Get-ChildItem Env:\   
-    Get-Module -ListAvailable 
+    Get-Module -ListAvailable | Format-Table -Property ModuleType, Name, Version
 }
 
 #
