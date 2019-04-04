@@ -8,7 +8,8 @@
 
 if ($env:TF_BUILD) {
     $PSVersionTable
-    Get-ChildItem Env:\    
+    Get-ChildItem Env:\   
+    Get-Module -ListAvailable 
 }
 
 #
