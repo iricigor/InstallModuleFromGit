@@ -40,7 +40,7 @@ Root    : True
 Git     : https://github.com/iricigor/FIFA2018
 ```
 
-This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version _(currently 0.3.46)_.
+This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46) .
 
 ### Example 2
 ```
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
