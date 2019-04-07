@@ -15,18 +15,28 @@ You can check if you have it by running `Get-Command git` in your PowerShell.
 
 ## Installation
 
-### from PowerShell gallery
+### From PowerShell gallery
 
-:dash: _(not yet available)_
+This is recommended way how to install module.
 
-### clone GitHub repository
+```PowerShell
+Install-Module InstallModuleFromGit -Scope CurrentUser
+```
+[![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
+
+### Clone GitHub repository
 
 ```PowerShell
 git clone https://github.com/iricigor/InstallModuleFromGit
 Import-Module ./InstallModuleFromGit/InstallModuleFromGit.psd1
-# and this is the last time you will be doing it like this
+```
 
-# after you install this module you can do it like this
+### If you already installed this module once
+
+If you have this module already installed, you can install latest / not-yet-published version from this GitHUb repository using the module itself!
+As all commits are verified before and after they are merged to master branch, this should be pretty safe operation also.
+
+```PowerShell
 Install-GitModule https://github.com/iricigor/InstallModuleFromGit
 ```
 
