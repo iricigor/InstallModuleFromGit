@@ -9,8 +9,8 @@
 #
 
 $ModuleName = 'InstallModuleFromGit'
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path # test folder
-$root = (get-item $here).Parent.FullName                # module root folder
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path     # Tests/Module folder
+$root = (get-item $here).Parent.Parent.FullName             # module root folder
 Import-Module (Join-Path $root "$ModuleName.psm1") -Force
 
 
@@ -18,7 +18,7 @@ Import-Module (Join-Path $root "$ModuleName.psm1") -Force
 # Fake test
 #
 
-Describe "Fake-Test" {
+Describe "Fake-Test" -Tag 'Other' {
     It "Should be fixed by developer" {
         $true | Should -Be $true
     }
@@ -30,12 +30,11 @@ Describe "Fake-Test" {
 #
 
 
-Describe 'Proper Declarations' {
+Describe 'Proper Declarations' -Tag 'Other' {
 
     It 'Checks for existence of functions' {
         @(Get-Command -Module $ModuleName -CommandType Function).Count | Should -Be 2 -Because 'We should have two functions defined'
         Get-Command NonExistingCommand -ea 0 | Should -Be $Null
-        # cache management
         Get-Command Get-GitModule -ea 0 | Should -Not -Be $Null
         Get-Command Install-GitModule -ea 0 | Should -Not -Be $Null
     }
@@ -43,47 +42,7 @@ Describe 'Proper Declarations' {
 }
 
 
-#
-# Basic tests, this should be added to individual files
-#
-
-Describe 'Basic testing' {
-
-    $moduleName = 'FIFA2018'
-    $moduleURL = 'https://github.com/iricigor/' + $moduleName
-    It 'Get-GitModule does not throw an exception' {
-        {Get-GitModule $moduleURL} | Should -Not -Throw
-    }
-
-    It 'Get-GitModule returns some value' {
-        Get-GitModule $moduleURL | Should -Not -Be $null
-    }
-
-    It 'Get-GitModule returns proper value' {
-        (Get-GitModule $moduleURL).Name | Should -Be $moduleName
-    }
-    
-    $moduleName = 'psaptgetupdate'
-    $moduleURL = 'https://github.com/iricigor/' + $moduleName
-    It 'Install-GitModule does not throw an exception' {
-        {Install-GitModule $moduleURL -Force} | Should -Not -Throw
-    }
-
-    It 'Install-GitModule returns some value' {
-        Install-GitModule $moduleURL -Force | Should -Not -Be $null
-    }
-
-    It 'Install-GitModule returns proper value' {
-        (Install-GitModule $moduleURL -Force).Name | Should -Be $moduleName
-    }
-
-    It 'Install-GitModule really installs module' {
-        Get-Module $moduleName -ListAvailable | Should -Not -Be $null
-    }
-}
-
-
-Describe 'Proper Documentation' {
+Describe 'Proper Documentation' -Tag 'Documentation' {
 
 	It 'Updates documentation and does git diff' {
 
@@ -105,7 +64,7 @@ Describe 'Proper Documentation' {
 }
 
 
-Describe 'ScriptAnalyzer Tests' {
+Describe 'ScriptAnalyzer Tests' -Tag 'Documentation' {
     it 'Checks cmdlets and finds no errors' {
         # Install PSScriptAnalyzer
         if (!(Get-Module PSScriptAnalyzer -List -ea 0)) {Install-Module PSScriptAnalyzer -Force -Scope CurrentUser}
