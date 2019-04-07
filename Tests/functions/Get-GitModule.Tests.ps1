@@ -23,4 +23,8 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
         (Get-GitModule $moduleURL).Name | Should -Be $moduleName
     }
 
+    It "$CommandName properly parses retrieved module" {
+        (Get-GitModule $moduleURL).SameName | Should -Be $true
+    }
+
 }

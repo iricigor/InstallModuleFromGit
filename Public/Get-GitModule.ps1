@@ -49,14 +49,14 @@ function Get-GitModule {
             }
             Write-Verbose -Message "$(Get-Date -f T)   cloning repository to $tempDir"
             git clone $P1 --branch $Branch --single-branch $tempDir --quiet
-            $psd1 = (Get-ChildItem $tempDir -Include *.psd1 -Recurse).FullName
+            $psd1 = Get-ChildItem $tempDir -Include *.psd1 -Recurse
 
             if($psd1 -is [array]) {
                 $errorText = "$FunctionName found multiple module manifests for $ModuleName"
-            } elseif (!($psd1 -is [string])) {
+            } elseif (!($psd1.FullName -is [string])) {
                 $errorText = "$FunctionName found no module manifest for $ModuleName"
             } else {
-                $ModuleVersion = (Get-Content -Raw $psd1 | Invoke-Expression).ModuleVersion
+                $ModuleVersion = (Get-Content -Raw $psd1.FullName | Invoke-Expression).ModuleVersion
                 $errorText = $null
             }
 
@@ -78,9 +78,11 @@ function Get-GitModule {
             [PSCustomObject]@{
                 Name = $ModuleName
                 Version = $ModuleVersion
-                Path = if ($KeepTempCopy) {$tempDir} else {$null}
-                Root = ((Split-Path $psd1 -Parent) -eq $tempDir)
-                Git = $P1
+                LocalPath = if ($KeepTempCopy) {$tempDir} else {$null}
+                Root = ((Split-Path $psd1.FullName -Parent) -eq $tempDir)
+                SameName = ($psd1.BaseName -eq $ModuleName)
+                ManifestName = $psd1.BaseName
+                GitPath = $P1
             }
         }
     }
