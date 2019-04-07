@@ -43,7 +43,14 @@ function Install-GitModule {
 
             $ModuleInfo = Get-GitModule -ProjectUri $P1 -KeepTempCopy
             if (!$ModuleInfo -or ($ModuleInfo.Count -gt 1)) {continue} # we have the error in get-gitmodule
-            if (!$ModuleInfo.Root) {Write-Warning -Message "$FunctionName installing module with manifest not located in module root directory"}
+            
+            # verify properties
+            if (!$ModuleInfo.Root) {
+                Write-Warning -Message "$FunctionName installing module with manifest not located in module root directory"
+            }
+            if (!$ModuleInfo.SameName) {
+                Write-Warning -Message "$FunctionName installing module with module name not the same as its directory name"
+            }
 
             # check target directory
             $TargetDir = Join-Path (Join-Path $DestinationPath $ModuleInfo.Name) $ModuleInfo.Version
@@ -56,16 +63,16 @@ function Install-GitModule {
             
             # copy module
             Write-Verbose -Message "$(Get-Date -f T)   installing module to $TargetDir"
-            Copy-Item "$($ModuleInfo.Path)/*" $TargetDir -Force -Recurse | Out-Null
+            Copy-Item "$($ModuleInfo.LocalPath)/*" $TargetDir -Force -Recurse | Out-Null
             
             # clean up
             $gitDir = Join-Path $TargetDir '.git'
             if (Test-Path $gitDir) {Remove-Item $gitDir -Recurse -Force}
-            Remove-Item $ModuleInfo.Path -Recurse -Force | Out-Null
+            Remove-Item $ModuleInfo.LocalPath -Recurse -Force | Out-Null
             Write-Verbose -Message "$(Get-Date -f T)   module $ModuleName installation completed"
 
             # return value
-            $ModuleInfo.Path = $TargetDir
+            $ModuleInfo.LocalPath = $TargetDir
             $ModuleInfo
         }
     }
