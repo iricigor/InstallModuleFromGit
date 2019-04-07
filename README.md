@@ -31,7 +31,7 @@ git clone https://github.com/iricigor/InstallModuleFromGit
 Import-Module ./InstallModuleFromGit/InstallModuleFromGit.psd1
 ```
 
-### If you already installed this module once
+### Using this module
 
 If you have this module already installed, you can install latest / not-yet-published version from this GitHUb repository using the module itself!
 As all commits are verified before and after they are merged to master branch, this should be pretty safe operation also.
@@ -62,7 +62,7 @@ Installs PowerShell module to user's default install folder. More info [here](/D
 
 ## Tests
 
-:smirk: So far the module has a basic testing only, but it is doing that against two platforms - Linux and Windows. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
+:smirk: Module has testing against two platforms - Linux and Windows. Code is verified before and after merging to master branch. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
 Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallModuleFromGit%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
 
