@@ -6,7 +6,11 @@ function Get-InstallPath {
     } else {
         # https://github.com/PowerShell/PowerShellGet/blob/8004c304a2fa8ad32b92c6c2ba7efe116df3c862/src/PowerShellGet/private/modulefile/PartOne.ps1#L46
         try {
-            [Environment]::GetFolderPath("MyDocuments") + '\WindowsPowerShell\Modules'
+            if ($PSVersionTable.PSEdition -eq 'Core') {
+                [Environment]::GetFolderPath("MyDocuments") + '\PowerShell\Modules'
+            } else {
+                [Environment]::GetFolderPath("MyDocuments") + '\WindowsPowerShell\Modules'
+            }            
         } catch {
             "$home\Documents\PowerShell\Modules"
         }
