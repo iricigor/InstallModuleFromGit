@@ -8,7 +8,7 @@ function InstallModule ([string]$Name,[version]$Version){
         Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
         Import-Module $Name
     }
-    Get-Module $Name -List
+    if ($env:TF_BUILD) {Get-Module $Name -List}
 }
 
 #
