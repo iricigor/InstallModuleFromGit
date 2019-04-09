@@ -52,6 +52,16 @@ PS:\> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Im
 
 ## Commands
 
+### Module
+
+The module Install Module From Git exposes two new commandlets. More info on module [here](/Docs/InstallModuleFromGit.md).
+
+Module provides updatable help system, though it is working currently only on Windows PowerShell. Tracking issue is [here](https://github.com/iricigor/InstallModuleFromGit/issues/3).
+
+```PowerShell
+Update-Help -Module InstallModuleFromGit -Force
+```
+
 ### Get-GitModule
 
 Checks for module existence and returns its version. More info [here](/Docs/Get-GitModule.md).
