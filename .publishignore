@@ -1,0 +1,8 @@
+# specifies files which will NOT be published to PS Gallery
+.*
+PesterTestResults.xml
+tools/*
+Tests/*
+img/*
+Docs/*.md
+cab/
