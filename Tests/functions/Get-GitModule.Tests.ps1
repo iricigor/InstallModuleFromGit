@@ -27,4 +27,12 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
         (Get-GitModule $moduleURL).SameName | Should -Be $true
     }
 
+    $moduleName = 'HBOParser'
+    $moduleURL = 'https://github.com/iricigor/' + $moduleName
+    It "$CommandName reads repository without psd1" {
+        (Get-GitModule $moduleURL).Name | Should -Be $moduleName
+    }
+
+
+
 }
