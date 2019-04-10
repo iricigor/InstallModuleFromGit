@@ -93,7 +93,7 @@ You can chat about this commandlet via [Skype](https://www.skype.com) _(no Skype
 
 ## Contributing
 
-If you find any problems, feel free to open a new issue.
+If you find any problems, feel free to [open a new issue](https://github.com/iricigor/InstallModuleFromGit/issues/new).
 
 ![GitHub open issues](https://img.shields.io/github/issues/iricigor/InstallModuleFromGit.svg?style=flat)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/iricigor/InstallModuleFromGit.svg?style=flat)

@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('Azure','DevOps','ADO','VSTS','GitHub','Install Module','git clone','git','git client','PowerShellGet')
+        Tags = @('Azure','DevOps','ADO','VSTS','GitHub','Install-Module','git-clone','git','git-client','PowerShellGet')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/iricigor/InstallModuleFromGit/blob/master/LICENSE'
