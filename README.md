@@ -23,6 +23,7 @@ This is recommended way how to install module.
 Install-Module InstallModuleFromGit -Scope CurrentUser
 ```
 [![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
+[![latest version](https://img.shields.io/powershellgallery/v/InstallModuleFromGit.svg?label=latest+version)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
 
 ### Clone GitHub repository
 
@@ -82,6 +83,22 @@ _Click on images to see details about the latest build runs._
 
 ## Similar PowerShell modules
 
-- :mega: [dfinke](https://github.com/dfinke)/[InstallModuleFromGitHub](https://github.com/dfinke/InstallModuleFromGitHub)
-  - (pluses) does not require git client
-  - (minuses) works only with GitHub
+- :mega: [dfinke](https://github.com/dfinke)/[InstallModuleFromGitHub](https://github.com/dfinke/InstallModuleFromGitHub), (pluses) does not require git client, (minuses) works only with GitHub
+
+## Support
+
+You can chat about this commandlet via [Skype](https://www.skype.com) _(no Skype ID required)_, by clicking a link below.
+
+[![chat on Skype](https://img.shields.io/badge/chat-on%20Skype-blue.svg?style=flat)](https://join.skype.com/hQMRyp7kwjd2)
+
+## Contributing
+
+If you find any problems, feel free to open a new issue.
+
+![GitHub open issues](https://img.shields.io/github/issues/iricigor/InstallModuleFromGit.svg?style=flat)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/iricigor/InstallModuleFromGit.svg?style=flat)
+
+If you want to contribute, please fork the code and make a new PR after!
+
+![GitHub](https://img.shields.io/github/license/iricigor/InstallModuleFromGit.svg?style=flat)
+![GitHub top language](https://img.shields.io/github/languages/top/iricigor/InstallModuleFromGit.svg?style=flat)
