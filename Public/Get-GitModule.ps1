@@ -50,6 +50,17 @@ function Get-GitModule {
             Write-Verbose -Message "$(Get-Date -f T)   cloning repository to $tempDir"
             git clone $P1 --branch $Branch --single-branch $tempDir --quiet
             $psd1 = Get-ChildItem $tempDir -Include *.psd1 -Recurse
+            if (!$psd1) {
+                # try to make one from psm1 file
+                Write-Verbose -Message "$(Get-Date -f T)   manifest not found, searching for root module"
+                $psm1 = Get-ChildItem $tempDir -Include *.psm1 -Recurse
+                if ($psm1.FullName -is [string]) {
+                    Write-Verbose -Message "$(Get-Date -f T)   root module $($psm1.Name) found"
+                    $psd1File = $psm1.FullName -replace 'psm1$','psd1'
+                    New-ModuleManifest -Path $psd1File -RootModule $psm1.Name -ModuleVersion ([version]::new()) | Out-Null
+                    $psd1 = Get-ChildItem $tempDir -Include *.psd1 -Recurse
+                }
+            }
 
             if($psd1 -is [array]) {
                 $errorText = "$FunctionName found multiple module manifests for $ModuleName"
