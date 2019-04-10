@@ -1,8 +1,16 @@
+# v.1.1.0
+
+Date: TBA
+
+## new features in 1.0.1
+
+## bug fixes in 1.0.1
+
 # v.1.0.1
 
 Date: April 10, 2019
 
-For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/2).
+For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/2?closed=1).
 
 ## new features in 1.0.1
 - reduced number of files in published module
@@ -20,4 +28,4 @@ Date: April 7, 2019
 
 Initial release. 
 
-For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/1).
+For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/1?closed=1).
