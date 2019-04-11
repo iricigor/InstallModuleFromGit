@@ -55,7 +55,7 @@ function Install-GitModule {
             # check target directory
             $TargetDir = Join-Path (Join-Path $DestinationPath $ModuleInfo.Name) $ModuleInfo.Version
             if (!(Test-Path $TargetDir)) {
-                New-Item $TargetDir -ItemType Directory -Force
+                New-Item $TargetDir -ItemType Directory -Force | Out-Null
             } elseif ((Get-ChildItem $TargetDir) -and (!$Force)) {
                 Write-Error "$FunctionName cannot install into non-empty directory $TargetDir, use different -Destination or -Force to override it"
                 continue
