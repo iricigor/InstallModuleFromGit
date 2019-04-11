@@ -49,16 +49,17 @@ Describe 'Proper Module Declaration' -Tag 'Documentation' {
 
 
 #
-# Module should import two functions
+# Module should import three functions
 #
 
 
 Describe 'Proper Functions Declaration' -Tag 'Other' {
 
     It 'Checks for existence of functions' {
-        @(Get-Command -Module $ModuleName -CommandType Function).Count | Should -Be 2 -Because 'We should have two functions defined'
+        @(Get-Command -Module $ModuleName -CommandType Function).Count | Should -Be 3 -Because 'We should have two functions defined'
         Get-Command NonExistingCommand -ea 0 | Should -Be $Null
         Get-Command Get-GitModule -ea 0 | Should -Not -Be $Null
+        Get-Command Update-GitModule -ea 0 | Should -Not -Be $Null
         Get-Command Install-GitModule -ea 0 | Should -Not -Be $Null
     }
 }
@@ -82,7 +83,15 @@ Describe 'Proper Documentation' -Tag 'Documentation' {
         $diff = git diff --ignore-space-change .\Docs .\en-US
         Pop-Location
         $diff | Should -Be $null
-	}
+    }
+    
+    $Blank = '{{ Fill .+}}'    
+    foreach ($File in (Get-ChildItem .\Docs)) {
+        It "Documentation for $($File.Name) should not have blanks" {
+            Get-Content $File.FullName | Select-String -Pattern $Blank | Should -Be $null
+        }
+    }
+    
 }
 
 
