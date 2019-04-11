@@ -51,7 +51,7 @@ function Get-GitModule {
             git clone $P1 --branch $Branch --single-branch $tempDir --quiet
             $psd1 = Get-ChildItem $tempDir -Include *.psd1 -Recurse
             if (!$psd1) {
-                # try to make one from psm1 file
+                # try to make manifest from psm1 file
                 Write-Verbose -Message "$(Get-Date -f T)   manifest not found, searching for root module"
                 $psm1 = Get-ChildItem $tempDir -Include *.psm1 -Recurse
                 if ($psm1.FullName -is [string]) {
