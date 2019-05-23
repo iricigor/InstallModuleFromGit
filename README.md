@@ -57,12 +57,6 @@ PS:\> (Install-GitModule 'https://github.com/iricigor/psaptgetupdate').Name | Im
 
 The module Install Module From Git exposes two new commandlets. More info on module [here](/Docs/InstallModuleFromGit.md).
 
-Module provides updatable help system, though it is working currently only on Windows PowerShell. Tracking issue is [here](https://github.com/iricigor/InstallModuleFromGit/issues/3).
-
-```PowerShell
-Update-Help -Module InstallModuleFromGit -Force
-```
-
 ### Get-GitModule
 
 Checks for module existence and returns its version. More info [here](/Docs/Get-GitModule.md).
@@ -70,6 +64,18 @@ Checks for module existence and returns its version. More info [here](/Docs/Get-
 ### Install-GitModule
 
 Installs PowerShell module to user's default install folder. More info [here](/Docs/Install-GitModule.md).
+
+### Update-GitModule
+
+Updates previously installed PowerShell module if Git repository contains newer version. More info [here](/Docs/Update-GitModule.md).
+
+### Commands Help System
+
+Module provides updatable help system, though it is working currently only on Windows PowerShell. Tracking issue is [here](https://github.com/iricigor/InstallModuleFromGit/issues/3).
+
+```PowerShell
+Update-Help -Module InstallModuleFromGit -Force
+```
 
 ## Tests
 

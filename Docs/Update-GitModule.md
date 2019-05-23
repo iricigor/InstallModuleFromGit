@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-GitModule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+This cmdlet updates previously installed PowerShell module specified by its git repository URL if repository contains newer version than installed one.
 
 ## SYNTAX
 
@@ -18,21 +18,36 @@ Update-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-DestinationPath <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+This cmdlet updates previously installed PowerShell module specified by its git repository URL if repository contains newer version than installed one.
+
+You can also specify desired git branch.
+
+Cmdlet internally uses \`Get-GitModule\` cmdlet, so it requires \`git\` client tool to work.
+Cmdlet will actually download specified repository to user's default install directory for PowerShell modules.
+
+Cmdlet searches for module manifest ( .psd1) file only.
+Modules with only .psm1 files are not supported at the moment.
+
+If you do not have the same module already installed, commandlet will throw an error.
+
+Note that this will not import module, only install it (the same as built-in cmdlet \`Update-Module\`).
+You can rely on PowerShell's automatic import of modules into user session when needed.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-GitModule https://github.com/microsoft/SpeculationControl
 ```
 
-{{ Add example description here }}
+Updates the most downloadable PowerShell module directly from GitHub. If you do not have it installed, it will throw an error.
 
 ## PARAMETERS
 
 ### -Branch
-{{ Fill Branch Description }}
+Optional parameter that specifies which branch should be cloned.
+If omitted, \`master\` branch will be used.
 
 ```yaml
 Type: String
@@ -47,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationPath
-{{ Fill DestinationPath Description }}
+If you have a specific setup, you can override default install location with this parameter.
+As cmdlet always installs to user specific location, this can be useful to perform system wide installation (requires also elevated prompt).
 
 ```yaml
 Type: String
@@ -62,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-{{ Fill Force Description }}
+If DestinationPath location is not empty, commandlet will not install newer version there.
+This behavior can be overridden with -Force switch.
 
 ```yaml
 Type: SwitchParameter
@@ -77,7 +94,12 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectUri
-{{ Fill ProjectUri Description }}
+Mandatory parameter specifying URL or the repository.
+Multiple values are supported.
+Parameter is passed to \`git\` client, so whatever works there is good value.
+For example, in GitHub URLs you can specify parameter both with or without \`.git\` at the end of URL.
+
+You can pass this parameter also via pipeline, for example via \`Find-Module\` built-in cmdlet.
 
 ```yaml
 Type: String[]
