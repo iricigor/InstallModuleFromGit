@@ -12,9 +12,15 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
     $moduleName = 'FIFA2018'
     $moduleURL = 'https://github.com/iricigor/' + $moduleName
 
-    $ExistingModule = Get-Module $moduleName -List
-    It 'Should delete module if existing' -Skip:($ExistingModule -ne $null) {
+    $ExistingModule = Get-InstalledModule $moduleName -ea 0
+    It 'Should uninstall module if installed' -Skip:($ExistingModule -eq $null) {
         {Uninstall-Module $moduleName} | Should -Not -Throw
+    }
+
+    # its not so easy to remove PowerShell module
+    $ExistingModule = Get-Module $moduleName -ListAvailable
+    It 'Should delete module if still found' -Skip:($ExistingModule -eq $null) {
+        {Split-Path ($ExistingModule.Path) -Parent | Remove-Item -Force -Recurse} | Should -Not -Throw
     }
 
     It 'Should install module from PSGallery' {
