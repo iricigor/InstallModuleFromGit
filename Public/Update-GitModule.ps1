@@ -54,9 +54,8 @@ function Update-GitModule {
             if ($LocalModuleInfo.Version -ge $RemoteModuleInfo.Version) {
                 Write-Verbose "$(Get-Date -f T)   not updating module '$ModuleName', local version $($LocalModuleInfo.Version), remote version $($RemoteModuleInfo.Version)"
             } else {
-                Install-ModuleInfo -ModuleInfo $ModuleInfo -DestinationPath $DestinationPath -Force:$Force
+                Install-ModuleInfo -ModuleInfo $RemoteModuleInfo -DestinationPath $DestinationPath -Force:$Force
             }
-
             
         }
     }
