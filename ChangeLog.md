@@ -2,9 +2,10 @@
 
 Date: TBA
 
-## new features in 1.0.1
+## new features in 1.1.0
+- new command Update-GitModule which installs module only if local version exists and if older than remote
 
-## bug fixes in 1.0.1
+## bug fixes in 1.1.0
 
 # v.1.0.1
 
