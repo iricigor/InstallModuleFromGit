@@ -24,7 +24,7 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
     }
 
     It 'Should install module from PSGallery' {
-        {Install-Module $moduleName -Repository PSGallery -Scope CurrentUser} | Should -Not -Throw
+        {Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -Force} | Should -Not -Throw
     }
 
     It 'Should update module to newer version' {
