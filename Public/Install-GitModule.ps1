@@ -27,8 +27,8 @@ function Install-GitModule {
 
         $tmpRoot = [System.IO.Path]::GetTempPath()
 
-        # TODO: Check if this is inside of $env:PSModulePath
-        if ($DestinationPath -notin ($env:PSModulePath -split ';')) {
+        $PSModulePaths = $env:PSModulePath -split (';:'[[int]($IsLinux -or $IsMacOS)])
+        if ($DestinationPath -notin $PSModulePaths) {
             Write-Warning -Message "$FunctionName using path which is not in `$Env:PSModulePath ($DestinationPath)"
         }
 
