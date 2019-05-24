@@ -46,7 +46,8 @@ function Update-GitModule {
             # TODO: continue only after cleanup!
 
             # Check version, and if higher install it
-            $LocalModuleInfo = Get-Module -Name $ModuleName -ListAvailable | Sort-Object Version -Descending | Select -First 1
+            $AllModules = @((Get-Module -Name $ModuleName -ListAvailable),(Get-InstalledModule -Name $ModuleName)) | Select Name, Version
+            $LocalModuleInfo = $AllModules | Sort-Object Version -Descending | Select -First 1
             if (!$LocalModuleInfo) {
                 Write-Error "$FunctionName cannot find local module '$ModuleName'"
                 continue
