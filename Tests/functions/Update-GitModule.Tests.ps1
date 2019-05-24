@@ -24,7 +24,10 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
     }
 
     It 'Should install module from PSGallery' {
+        $OldProgressPreference = $ProgressPreference
+        $ProgressPreference = 'SilentlyContinue'
         {Install-Module $moduleName -Repository PSGallery -Scope CurrentUser -Force} | Should -Not -Throw
+        $ProgressPreference = $OldProgressPreference
     }
 
     It 'Should update module to newer version' {
