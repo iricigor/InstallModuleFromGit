@@ -27,8 +27,7 @@ Cmdlet will actually download specified repository to user's default install dir
 
 It does not support functionality \`-Scope AllUsers\`, but it is possible to specify \`-DestinationPath\` argument which will provide the same result.
 
-Cmdlet searches for module manifest ( .psd1) file only.
-Modules with only .psm1 files are not supported at the moment.
+Cmdlet searches for module manifest ( .psd1) file or if that is not found for module (.psm1) file itself.
 
 Note that this will not import module, only install it (the same as built-in cmdlet \`Install-Module\`).
 You can rely on PowerShell's automatic import of modules into user session when needed.

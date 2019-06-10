@@ -26,8 +26,7 @@ You can also specify desired git branch.
 Cmdlet internally uses \`Get-GitModule\` cmdlet, so it requires \`git\` client tool to work.
 Cmdlet will actually download specified repository to user's default install directory for PowerShell modules.
 
-Cmdlet searches for module manifest ( .psd1) file only.
-Modules with only .psm1 files are not supported at the moment.
+Cmdlet searches for module manifest ( .psd1) file or if that is not found for module (.psm1) file itself.
 
 If you do not have the same module already installed, commandlet will throw an error.
 
