@@ -75,7 +75,7 @@ function Get-GitModule {
                 Write-Verbose -Message "$(Get-Date -f T)   not deleting temp copy"
             } else {
                 Write-Verbose -Message "$(Get-Date -f T)   deleting temp copy"
-                Remove-Item $tempDir -Force -Recurse | Out-Null
+                Remove-Item $tempDir -Force -Recurse -ea 0 | Out-Null
             }
 
             if ($errorText) {

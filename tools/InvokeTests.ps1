@@ -24,6 +24,7 @@ function InstallModule ([string]$Name,[version]$Version){
 if ($env:TF_BUILD) {
     $PSVersionTable
     Get-ChildItem Env:\   
+    $Env:PSModulePath -split (';:'[[int]($IsLinux -or $IsMacOS)])
     Get-Module -ListAvailable | Format-Table -Property ModuleType, Name, Version
 }
 

@@ -27,8 +27,8 @@ function Install-GitModule {
 
         $tmpRoot = [System.IO.Path]::GetTempPath()
 
-        # TODO: Check if this is inside of $env:PSModulePath
-        if ($DestinationPath -notin ($env:PSModulePath -split ';')) {
+        $PSModulePaths = $env:PSModulePath -split (';:'[[int]($IsLinux -or $IsMacOS)])
+        if ($DestinationPath -notin $PSModulePaths) {
             Write-Warning -Message "$FunctionName using path which is not in `$Env:PSModulePath ($DestinationPath)"
         }
 
@@ -44,36 +44,7 @@ function Install-GitModule {
             $ModuleInfo = Get-GitModule -ProjectUri $P1 -KeepTempCopy
             if (!$ModuleInfo -or ($ModuleInfo.Count -gt 1)) {continue} # we have the error in get-gitmodule
             
-            # verify properties
-            if (!$ModuleInfo.Root) {
-                Write-Warning -Message "$FunctionName installing module with manifest not located in module root directory"
-            }
-            if (!$ModuleInfo.SameName) {
-                Write-Warning -Message "$FunctionName installing module with module name not the same as its directory name"
-            }
-
-            # check target directory
-            $TargetDir = Join-Path (Join-Path $DestinationPath $ModuleInfo.Name) $ModuleInfo.Version
-            if (!(Test-Path $TargetDir)) {
-                New-Item $TargetDir -ItemType Directory -Force | Out-Null
-            } elseif ((Get-ChildItem $TargetDir) -and (!$Force)) {
-                Write-Error "$FunctionName cannot install into non-empty directory $TargetDir, use different -Destination or -Force to override it"
-                continue
-            }
-            
-            # copy module
-            Write-Verbose -Message "$(Get-Date -f T)   installing module to $TargetDir"
-            Copy-Item "$($ModuleInfo.LocalPath)/*" $TargetDir -Force -Recurse | Out-Null
-            
-            # clean up
-            $gitDir = Join-Path $TargetDir '.git'
-            if (Test-Path $gitDir) {Remove-Item $gitDir -Recurse -Force}
-            Remove-Item $ModuleInfo.LocalPath -Recurse -Force | Out-Null
-            Write-Verbose -Message "$(Get-Date -f T)   module $ModuleName installation completed"
-
-            # return value
-            $ModuleInfo.LocalPath = $TargetDir
-            $ModuleInfo
+            Install-ModuleInfo -ModuleInfo $ModuleInfo -DestinationPath $DestinationPath -Force:$Force
         }
     }
 

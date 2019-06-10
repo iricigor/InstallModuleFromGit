@@ -69,7 +69,7 @@ Description = 'Installs module from Git repository (i.e. GitHUb or Azure DevOps)
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-GitModule','Install-GitModule')
+FunctionsToExport = @('Get-GitModule','Install-GitModule','Update-GitModule')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

@@ -1,45 +1,46 @@
 ---
 external help file: InstallModuleFromGit-help.xml
 Module Name: InstallModuleFromGit
-online version:
+online version: https://github.com/iricigor/InstallModuleFromGit/blob/master/Docs/Update-GitModule.md
 schema: 2.0.0
 ---
 
-# Install-GitModule
+# Update-GitModule
 
 ## SYNOPSIS
-This cmdlet installs PowerShell module specified by its git repository URL to user's default install directory.
+This cmdlet updates previously installed PowerShell module specified by its git repository URL if repository contains newer version than installed one.
 
 ## SYNTAX
 
 ```
-Install-GitModule [-ProjectUri] <String[]> [[-Branch] <String>] [[-DestinationPath] <String>] [-Force]
+Update-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-DestinationPath <String>] [-Force]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet installs PowerShell module specified by its git repository URL to user's default install folder.
+
+This cmdlet updates previously installed PowerShell module specified by its git repository URL if repository contains newer version than installed one.
 
 You can also specify desired git branch.
 
 Cmdlet internally uses \`Get-GitModule\` cmdlet, so it requires \`git\` client tool to work.
 Cmdlet will actually download specified repository to user's default install directory for PowerShell modules.
 
-It does not support functionality \`-Scope AllUsers\`, but it is possible to specify \`-DestinationPath\` argument which will provide the same result.
-
 Cmdlet searches for module manifest ( .psd1) file or if that is not found for module (.psm1) file itself.
 
-Note that this will not import module, only install it (the same as built-in cmdlet \`Install-Module\`).
+If you do not have the same module already installed, commandlet will throw an error.
+
+Note that this will not import module, only install it (the same as built-in cmdlet \`Update-Module\`).
 You can rely on PowerShell's automatic import of modules into user session when needed.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Install-GitModule 'https://github.com/iricigor/psaptgetupdate' -Verbose
+```powershell
+PS C:\> Update-GitModule https://github.com/microsoft/SpeculationControl
 ```
 
-This cmdlet will install PowerShell module from given repository (https://github.com/iricigor/psaptgetupdate').
+Updates the most downloadable PowerShell module directly from GitHub. If you do not have it installed, it will throw an error.
 
 ## PARAMETERS
 
@@ -53,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,15 +70,15 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Force
-If the module with specified name and the version exists, installation will fail.
-You can override this behaviour with \`-Force\` switch.
+If DestinationPath location is not empty, commandlet will not install newer version there.
+This behavior can be overridden with -Force switch.
 
 ```yaml
 Type: SwitchParameter
@@ -86,7 +87,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,9 +118,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String[]
+
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/iricigor/InstallModuleFromGit/blob/master/Docs/Update-GitModule.md](https://github.com/iricigor/InstallModuleFromGit/blob/master/Docs/Update-GitModule.md)
+
