@@ -5,11 +5,14 @@ function Get-GitModule {
     param (
         
         
-        [Parameter(Mandatory,ValueFromPipelineByPropertyName,Position=0)]
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName,Position=0,ParameterSetName='ByUri')]
         [string[]]$ProjectUri,
         # https://github.com/dfinke/InstallModuleFromGitHub
         # https://github.com/iricigor/FIFA2018
         
+        [Parameter(Mandatory,ParameterSetName='ByName')]
+        [string[]]$Name,
+
         [string]$Branch = "master",
         [switch]$KeepTempCopy
 
@@ -28,7 +31,29 @@ function Get-GitModule {
             $tmpRoot = $env:AGENT_TEMPDIRECTORY    
         } else {
             $tmpRoot = [System.IO.Path]::GetTempPath()
-        }        
+        }     
+        
+        if ($Name) {
+            Write-Verbose -Message "$(Get-Date -f T)   searching module URIs from their names"
+            $ProjectUri = foreach ($N1 in $Name) {
+                $Module = Get-InstalledModule $N1 -ea 0
+                if (!$Module) {$Module = Get-Module $N1 -ListAvailable -ea 0}
+
+                if (!$Module) {
+                    Write-Error "$FunctionName found no module $N1"
+                    continue
+                } 
+
+                if (!($Module | ? ProjectUri)) {
+                    Write-Warning "$FunctionName found module $N1, but it has no ProjectUri information"
+                    continue
+                }
+
+                # return information to $ProjectUri variable
+                $Module | Sort-Object Version | Select-Object -Last 1 -ExpandProperty ProjectUri
+
+            }
+        }
 
     }
 
@@ -62,8 +87,13 @@ function Get-GitModule {
                 }
             }
 
-            if($psd1 -is [array]) {
+            $psd0 = $psd1 | ? BaseName -eq $ModuleName
+            if (($psd1 -is [array]) -and (@($psd0).Count -ne 1)) {
                 $errorText = "$FunctionName found multiple module manifests for $ModuleName"
+            } elseif (($psd1 -is [array]) -and (@($psd0).Count -eq 1)) {
+                $ModuleVersion = (Get-Content -Raw $psd0.FullName | Invoke-Expression).ModuleVersion
+                $errorText = $null
+                $psd1 = $psd0
             } elseif (!($psd1.FullName -is [string])) {
                 $errorText = "$FunctionName found no module manifest for $ModuleName"
             } else {

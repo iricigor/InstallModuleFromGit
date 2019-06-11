@@ -12,8 +12,14 @@ This cmdlet will check for existence of PowerShell module in given repository an
 
 ## SYNTAX
 
+### ByUri
 ```
 Get-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-KeepTempCopy] [<CommonParameters>]
+```
+
+### ByName
+```
+Get-GitModule -Name <String[]> [-Branch <String>] [-KeepTempCopy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,13 +106,29 @@ You can pass this parameter also via pipeline, for example via \`Find-Module\` b
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: ByUri
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+You can query already installed modules for their online version if ProjectUri is specified in the module info.
+To do this, just specify module name(s) with parameter -Names.
+
+```yaml
+Type: String[]
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

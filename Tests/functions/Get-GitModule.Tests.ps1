@@ -33,6 +33,9 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
         (Get-GitModule $moduleURL).Name | Should -Be $moduleName
     }
 
-
+    $moduleName = 'Pester'
+    It "$CommandName finds module $moduleName by name" {
+        (Get-GitModule -Name $moduleName).Name | Should -Be $moduleName
+    }
 
 }
