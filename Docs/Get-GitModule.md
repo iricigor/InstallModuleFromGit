@@ -30,7 +30,7 @@ Cmdlet requires \`git\` client tool to work.
 It will download (\`git clone\`) specified repository to temporary directory and analyze it.
 By default, it will delete this temporary copy, but if needed, it can be kept.
 
-Cmdlet searches for module manifest ( .psd1) file or if that is not found for module (.psm1) file itself.
+Cmdlet searches for module manifest ( .psd1) file. If that is not found, then it searches for module (.psm1) file itself.
 
 ## EXAMPLES
 
