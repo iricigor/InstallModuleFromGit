@@ -45,7 +45,7 @@ Root    : True
 Git     : https://github.com/iricigor/FIFA2018
 ```
 
-This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46) .
+This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46).
 
 ### Example 2
 ```
