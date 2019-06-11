@@ -34,7 +34,7 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
     }
 
     $moduleName = 'FIFA2018'
-    Install-Module -Name $moduleName -Repository PSGallery
+    Install-Module -Name $moduleName -Repository PSGallery -Scope CurrentUser -Force
     It "$CommandName finds module $moduleName by name" {
         (Get-GitModule -Name $moduleName).Name | Should -Be $moduleName
     }
