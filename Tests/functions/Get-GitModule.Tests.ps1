@@ -33,7 +33,8 @@ Describe "$CommandName basic testing" -Tag 'Functionality' {
         (Get-GitModule $moduleURL).Name | Should -Be $moduleName
     }
 
-    Install-Module -Name $moduleName
+    $moduleName = 'FIFA2018'
+    Install-Module -Name $moduleName -Repository PSGallery
     It "$CommandName finds module $moduleName by name" {
         (Get-GitModule -Name $moduleName).Name | Should -Be $moduleName
     }
