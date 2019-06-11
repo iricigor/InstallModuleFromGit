@@ -1,4 +1,4 @@
----
+﻿---
 external help file: InstallModuleFromGit-help.xml
 Module Name: InstallModuleFromGit
 online version:
