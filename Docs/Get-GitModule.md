@@ -12,8 +12,14 @@ This cmdlet will check for existence of PowerShell module in given repository an
 
 ## SYNTAX
 
+### ByUri
 ```
 Get-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-KeepTempCopy] [<CommonParameters>]
+```
+
+### ByName
+```
+Get-GitModule -Name <String[]> [-Branch <String>] [-KeepTempCopy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +30,7 @@ Cmdlet requires \`git\` client tool to work.
 It will download (\`git clone\`) specified repository to temporary directory and analyze it.
 By default, it will delete this temporary copy, but if needed, it can be kept.
 
-Cmdlet searches for module manifest ( .psd1) file or if that is not found for module (.psm1) file itself.
+Cmdlet searches for module manifest ( .psd1) file. If that is not found, then it searches for module (.psm1) file itself.
 
 ## EXAMPLES
 
@@ -39,7 +45,7 @@ Root    : True
 Git     : https://github.com/iricigor/FIFA2018
 ```
 
-This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46) .
+This cmdlet will check for existence of PowerShell module in given repository (https://github.com/iricigor/FIFA2018') and return its version (currently 0.3.46).
 
 ### Example 2
 ```
@@ -90,6 +96,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+You can query already installed modules for their online version if ProjectUri is specified in the module info.
+To do this, just specify module name(s) with parameter -Names.
+
+```yaml
+Type: String[]
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectUri
 Mandatory parameter specifying URL or the repository.
 Multiple values are supported.
@@ -100,7 +122,7 @@ You can pass this parameter also via pipeline, for example via \`Find-Module\` b
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: ByUri
 Aliases:
 
 Required: True
