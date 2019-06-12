@@ -80,7 +80,7 @@ Describe 'Proper Documentation' -Tag 'Documentation' {
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
 
         # test it
-        $diff = git diff --ignore-space-change --name-status .\Docs .\en-US 
+        $diff = git diff --ignore-space-change .\Docs .\en-US 
         Pop-Location
         $diff | Should -Be $null
     }
