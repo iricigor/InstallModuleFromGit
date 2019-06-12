@@ -76,7 +76,7 @@ Describe 'Proper Documentation' -Tag 'Documentation' {
 
         # update documentation
 		Push-Location -Path $root
-        Update-MarkdownHelp -Path .\Docs
+        Update-MarkdownHelp -Path .\Docs -AlphabeticParamsOrder
         New-ExternalHelp -Path .\Docs -OutputPath .\en-US -Force
 
         # test it

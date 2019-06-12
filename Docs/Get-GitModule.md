@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: InstallModuleFromGit-help.xml
 Module Name: InstallModuleFromGit
 online version:
@@ -96,6 +96,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+You can query already installed modules for their online version if ProjectUri is specified in the module info.
+To do this, just specify module name(s) with parameter -Names.
+
+```yaml
+Type: String[]
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectUri
 Mandatory parameter specifying URL or the repository.
 Multiple values are supported.
@@ -113,22 +129,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-You can query already installed modules for their online version if ProjectUri is specified in the module info.
-To do this, just specify module name(s) with parameter -Names.
-
-```yaml
-Type: String[]
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
