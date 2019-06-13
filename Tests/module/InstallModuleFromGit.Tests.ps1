@@ -11,7 +11,7 @@
 $ModuleName = 'InstallModuleFromGit'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path     # Tests/Module folder
 $root = (get-item $here).Parent.Parent.FullName             # module root folder
-Import-Module (Join-Path $root "$ModuleName.psm1") -Force
+Import-Module (Join-Path $root "$ModuleName.psd1") -Force
 
 
 #
@@ -67,6 +67,8 @@ Describe 'Proper Functions Declaration' -Tag 'Other' {
 
 Describe 'Proper Documentation' -Tag 'Documentation' {
 
+    Push-Location $root
+
 	It 'Updates documentation and does git diff' {
 
         # install PlatyPS
@@ -92,6 +94,7 @@ Describe 'Proper Documentation' -Tag 'Documentation' {
         }
     }
     
+    Pop-Location
 }
 
 
