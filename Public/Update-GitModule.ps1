@@ -5,11 +5,14 @@ function Update-GitModule {
     param (
         
         
-        [Parameter(Mandatory,ValueFromPipelineByPropertyName,Position=0)]
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName,Position=0,ParameterSetName='ByUri')]
         [string[]]$ProjectUri,
         # https://github.com/dfinke/InstallModuleFromGitHub
         # https://github.com/iricigor/FIFA2018
         
+        [Parameter(Mandatory,ParameterSetName='ByName')]
+        [string[]]$Name,
+
         [string]$Branch = "master",
         [string]$DestinationPath = (Get-InstallPath),
         [switch]$Force
@@ -30,6 +33,8 @@ function Update-GitModule {
         } else {
             $tmpRoot = [System.IO.Path]::GetTempPath()
         }        
+
+        if ($Name) {$ProjectUri = ConvertTo-Uri -Name $Name}
 
     }
 
