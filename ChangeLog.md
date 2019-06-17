@@ -9,7 +9,7 @@ Date: TBA
 ## 🛠️ bug fixes in 1.1.0
 - n/a
 
-For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/3?closed=1).
+For a full feature list, check [GitHub milestone link](https://github.com/iricigor/InstallModuleFromGit/milestone/4?closed=1).
 
 - - -
 
