@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -Name
 You can query already installed modules for their online version if ProjectUri is specified in the module info.
-To do this, just specify module name(s) with parameter -Names.
+To do this, just specify module name(s) with parameter -Name.
 
 ```yaml
 Type: String[]

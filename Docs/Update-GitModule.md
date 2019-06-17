@@ -12,9 +12,15 @@ This cmdlet updates previously installed PowerShell module specified by its git 
 
 ## SYNTAX
 
+### ByUri
 ```
 Update-GitModule [-ProjectUri] <String[]> [-Branch <String>] [-DestinationPath <String>] [-Force]
  [<CommonParameters>]
+```
+
+### ByName
+```
+Update-GitModule -Name <String[]> [-Branch <String>] [-DestinationPath <String>] [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +98,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+You can update already installed modules with their git online version if ProjectUri is specified in the module info.
+To do this, just specify module name(s) with parameter -Name.
+
+```yaml
+Type: String[]
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectUri
 Mandatory parameter specifying URL or the repository.
 Multiple values are supported.
@@ -102,7 +124,7 @@ You can pass this parameter also via pipeline, for example via \`Find-Module\` b
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: ByUri
 Aliases:
 
 Required: True
