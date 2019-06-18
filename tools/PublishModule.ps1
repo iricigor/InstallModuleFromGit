@@ -1,5 +1,6 @@
 # Script should be executed manually by developer
 $ModuleName = 'InstallModuleFromGit'
+$InVSTS = [bool]($Env:TF_BUILD -eq 'True')
 
 # check running folder
 if ((Test-Path "..\$ModuleName\$ModuleName.psd1") -or ((Test-Path "..\s\$ModuleName.psd1"))) {
@@ -23,7 +24,7 @@ if (($Module.Version.ToString() -split '\.').Count -lt 3) {
     "Module version tag '$($Module.Version.ToString())' is OK"
 }
 
-# test if remote is not the same
+# test if the module is not already published with same version number
 "Checking for module with version $($Module.Version) online..."
 if (Find-Module -Name $ModuleName -RequiredVersion ($Module.Version) -Repository PSGallery -ea 0) {
     throw 'Module with same version already exists'
@@ -31,6 +32,7 @@ if (Find-Module -Name $ModuleName -RequiredVersion ($Module.Version) -Repository
     "No module with version $($Module.Version) found online"
 }
 
+# get publishing key from pipeline or directly
 if ($Env:NugetKey) {$NugetKey = $Env:NugetKey}
 if ($NugetKey) {
     "NugetKey found"
@@ -39,13 +41,12 @@ if ($NugetKey) {
 }
 
 # copy entire folder to temp location
-if ($IsLinux -or $IsMacOS) {$Destination = '/tmp'}
-else {$Destination = $Env:TEMP}
-
-$Destination2 = Resolve-Path Join-Path $Destination $ModuleName
-"Copying to $Destination2"
+if ($IsLinux -or $IsMacOS) {$Destination = '/tmp'} else {$Destination = $Env:TEMP}
+$Destination2 = Join-Path $Destination $ModuleName
 if (Test-Path $Destination2) {Remove-Item $Destination2 -Recurse -Force}
-if ($Env:TF_BUILD -eq 'True') {
+
+"Copying to $Destination2"
+if ($InVSTS) {
     New-Item -Path $Destination2 -ItemType Directory | Out-Null
     Get-ChildItem -Force | Copy-Item -Destination $Destination2 -Container -Recurse
     "`nverifying content of $Destination2"
@@ -70,7 +71,8 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 }
 
 # publish
-if ($Env:TF_BUILD -eq 'True') {
+"Publishing total of $((Get-ChildItem $Destination2 -Recurse -File).Count) files"
+if ($InVSTS) {
     if ($Env:ModuleVersionToPublish -eq $Module.Version) {
         Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
         "Module $ModuleName published to PowerShell Gallery"    
@@ -82,4 +84,3 @@ if ($Env:TF_BUILD -eq 'True') {
     Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
     "Module $ModuleName published to PowerShell Gallery"
 }
-
