@@ -42,7 +42,7 @@ if ($NugetKey) {
 if ($IsLinux -or $IsMacOS) {$Destination = '/tmp'}
 else {$Destination = $Env:TEMP}
 
-$Destination2 = Join-Path $Destination $ModuleName
+$Destination2 = Resolve-Path Join-Path $Destination $ModuleName
 "Copying to $Destination2"
 if (Test-Path $Destination2) {Remove-Item $Destination2 -Recurse -Force}
 if ($Env:TF_BUILD -eq 'True') {
@@ -56,7 +56,7 @@ if ($Env:TF_BUILD -eq 'True') {
 
 # remove not needed files (as per .publishignore)
 "Removing not needed files"
-$pwdLength = $Destination2.Length + 1
+$pwdLength = (Get-Item $Destination2).FullName.Length + 1 # expands 'C:\Users\VSSADM~1\AppData\Local\Temp'
 foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
     "Checking files like $line"
     foreach ($file in (Get-ChildItem -Path $Destination2 -Recurse -Force -File)) {
