@@ -6,3 +6,4 @@ Tests/*
 img/*
 Docs/*.md
 cab/*
+en-US/InstallModuleFromGit-help.xml
