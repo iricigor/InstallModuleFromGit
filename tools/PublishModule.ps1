@@ -2,10 +2,10 @@
 $ModuleName = 'InstallModuleFromGit'
 
 # check running folder
-if (!(Test-Path "..\$ModuleName\$ModuleName.psd1")) {
-    throw "We are not in correct folder, please run this tool as .\tools\PublishModule.ps1"
+if ((Test-Path "..\$ModuleName\$ModuleName.psd1") -or ((Test-Path "..\s\$ModuleName.psd1"))) {
+    "Checking module $(Resolve-Path ".\$ModuleName.psd1")"
 } else {
-    "Checking module $(Resolve-Path "..\$ModuleName\$ModuleName.psd1")"
+    throw "We are not in correct folder, please run this tool as .\tools\PublishModule.ps1"
 }
 
 # test manifest
