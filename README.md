@@ -1,5 +1,7 @@
 <img align="right" width="203" height="294" src="img/InstallModuleFromGit.logo.png">
 
+![github/release](https://img.shields.io/github/release/iricigor/InstallModuleFromGit.svg) ![last-release-date](https://img.shields.io/github/release-date/iricigor/InstallModuleFromGit.svg) ![commits-since-latest](https://img.shields.io/github/commits-since/iricigor/InstallModuleFromGit/latest.svg) ![last-commit](https://img.shields.io/github/last-commit/iricigor/InstallModuleFromGit.svg)
+
 # Install Module from Git
 
 :bowtie: This PowerShell module will help you to easily instal PowerShell modules directly from [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/repos/) (_aka VSTS_) or [GitHub](https://github.com/) or any other git repository.
@@ -17,13 +19,11 @@ You can check if you have it by running `Get-Command git` in your PowerShell.
 
 ### From PowerShell gallery
 
-This is recommended way how to install module.
+This is recommended way how to install module. [![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads&logo=PowerShell)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
 
 ```PowerShell
 Install-Module InstallModuleFromGit -Scope CurrentUser
 ```
-[![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
-[![latest version](https://img.shields.io/powershellgallery/v/InstallModuleFromGit.svg?label=latest+version)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
 
 ### Clone GitHub repository
 
@@ -81,9 +81,7 @@ Update-Help -Module InstallModuleFromGit -Force
 
 :smirk: Module has testing against two platforms - Linux and Windows. Code is verified before and after merging to master branch. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
-Windows build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallModuleFromGit%20-%20Win%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master)
-
-Linux build status [![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/InstallModuleFromGit%20-%20Linux%20CI?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
+[![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/16.svg?style=popout&logo=Windows&logoColor=blue)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master) [![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/17.svg?style=popout&logo=Linux&logoColor=black)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
 
 _Click on images to see details about the latest build runs._
 
@@ -95,12 +93,13 @@ _Click on images to see details about the latest build runs._
 
 You can chat about this commandlet via [Skype](https://www.skype.com) _(no Skype ID required)_, by clicking a link below.
 
-[![chat on Skype](https://img.shields.io/badge/chat-on%20Skype-blue.svg?style=flat)](https://join.skype.com/hQMRyp7kwjd2)
+[![chat on Skype](https://img.shields.io/badge/chat-on%20Skype-blue.svg?style=popout&logo=Skype)](https://join.skype.com/hQMRyp7kwjd2)
 
 ## Contributing
 
-If you find any problems, feel free to [open a new issue](https://github.com/iricigor/InstallModuleFromGit/issues/new).
+If you find any problems, feel free to open a new issue.
 
+[![open a new issue](https://img.shields.io/badge/open%20new-issue-success.svg?logo=GitHub&logoColor=black)](https://github.com/iricigor/InstallModuleFromGit/issues/new)
 ![GitHub open issues](https://img.shields.io/github/issues/iricigor/InstallModuleFromGit.svg?style=flat)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/iricigor/InstallModuleFromGit.svg?style=flat)
 
@@ -108,3 +107,5 @@ If you want to contribute, please fork the code and make a new PR after!
 
 ![GitHub](https://img.shields.io/github/license/iricigor/InstallModuleFromGit.svg?style=flat)
 ![GitHub top language](https://img.shields.io/github/languages/top/iricigor/InstallModuleFromGit.svg?style=flat)
+![repo-stars](https://img.shields.io/github/stars/iricigor/InstallModuleFromGit.svg)
+![repo-watchers](https://img.shields.io/github/watchers/iricigor/InstallModuleFromGit.svg)
