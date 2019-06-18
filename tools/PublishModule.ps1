@@ -73,6 +73,7 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 # publish
 "Publishing total of $((Get-ChildItem $Destination2 -Recurse -File).Count) files"
 if ($InVSTS) {
+    Get-ChildItem $Destination2 -Recurse -File
     if ($Env:ModuleVersionToPublish -eq $Module.Version) {
         Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
         "Module $ModuleName published to PowerShell Gallery"    
