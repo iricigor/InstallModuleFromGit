@@ -63,7 +63,7 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 }
 
 # publish
-if ($TF_BUILD) {
+if ($TF_BUILD -eq 'True') {
     if ($Env:ModuleVersionToPublish -eq $Module.Version) {
         Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
         "Module $ModuleName published to PowerShell Gallery"    
