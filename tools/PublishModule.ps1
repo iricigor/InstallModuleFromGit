@@ -48,6 +48,8 @@ if (Test-Path $Destination2) {Remove-Item $Destination2 -Recurse -Force}
 if ($Env:TF_BUILD -eq 'True') {
     New-Item -Path $Destination2 -ItemType Directory | Out-Null
     Get-ChildItem -Force | Copy-Item -Destination $Destination2 -Container -Recurse
+    "`nverifying content of $Destination2"
+    Get-ChildItem $Destination2 -Force
 } else {
     Copy-Item -Path . -Destination $Destination -Recurse # it creates folder $ModuleName
 }
