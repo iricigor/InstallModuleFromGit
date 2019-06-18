@@ -20,7 +20,7 @@ try {
 if (($Module.Version.ToString() -split '\.').Count -lt 3) {
     throw "Module version must have three segments at least, currently it is $($Module.Version.ToString())"
 } else {
-    "Module version $($Module.Version.ToString()) is OK"
+    "Module version tag '$($Module.Version.ToString())' is OK"
 }
 
 # test if remote is not the same
@@ -68,7 +68,7 @@ if ($Env:TF_BUILD -eq 'True') {
         Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
         "Module $ModuleName published to PowerShell Gallery"    
     } else {
-        "Mismatching module versions $($Env:ModuleVersionToPublish) and $($Module.Version), please update pipeline variable ModuleVersionToPublish"
+        throw "Mismatching module versions $($Env:ModuleVersionToPublish) and $($Module.Version), please update pipeline variable ModuleVersionToPublish"
     }
 } else {
     Read-Host "All prerequisites check. Press Enter to Publish module or Ctrl+C to abort"
