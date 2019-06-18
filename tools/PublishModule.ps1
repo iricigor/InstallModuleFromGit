@@ -45,7 +45,11 @@ else {$Destination = $Env:TEMP}
 $Destination2 = Join-Path $Destination $ModuleName
 "Copying to $Destination2"
 if (Test-Path $Destination2) {Remove-Item $Destination2 -Recurse -Force}
-Copy-Item -Path . -Destination $Destination -Recurse # it creates folder $ModuleName
+if ($Env:TF_BUILD -eq 'True') {
+    Copy-Item -Path .\* -Destination $Destination2 -Recurse # it creates folder $ModuleName    
+} else {
+    Copy-Item -Path . -Destination $Destination -Recurse # it creates folder $ModuleName
+}
 
 # remove not needed files (as per .publishignore)
 "Removing not needed files"
