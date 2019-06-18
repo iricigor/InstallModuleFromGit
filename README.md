@@ -19,15 +19,11 @@ You can check if you have it by running `Get-Command git` in your PowerShell.
 
 ### From PowerShell gallery
 
-This is recommended way how to install module.
+This is recommended way how to install module. [![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads&logo=PowerShell)](https://www.powershellgallery.com/packages/InstallModuleFromGit)
 
 ```PowerShell
 Install-Module InstallModuleFromGit -Scope CurrentUser
 ```
-
-| [![downloads](https://img.shields.io/powershellgallery/dt/InstallModuleFromGit.svg?label=downloads&style=popout&logo=PowerShell)](https://www.powershellgallery.com/packages/InstallModuleFromGit) | [![latest version](https://img.shields.io/powershellgallery/v/InstallModuleFromGit.svg?label=latest+version)](https://www.powershellgallery.com/packages/InstallModuleFromGit) | [![supported platforms](https://img.shields.io/powershellgallery/p/InstallModuleFromGit.svg)](https://www.powershellgallery.com/packages/InstallModuleFromGit) |
-|-|-|-|
-
 
 ### Clone GitHub repository
 
@@ -103,8 +99,9 @@ You can chat about this commandlet via [Skype](https://www.skype.com) _(no Skype
 
 If you find any problems, feel free to open a new issue.
 
-| [![open a new issue](https://img.shields.io/badge/open%20new-issue-success.svg?style=popout&logo=GitHub&logoColor=black)](https://github.com/iricigor/InstallModuleFromGit/issues/new) | ![GitHub open issues](https://img.shields.io/github/issues/iricigor/InstallModuleFromGit.svg?style=flat) | ![GitHub closed issues](https://img.shields.io/github/issues-closed/iricigor/InstallModuleFromGit.svg?style=flat) |
-|-|-|-|
+[![open a new issue](https://img.shields.io/badge/open%20new-issue-success.svg?logo=GitHub&logoColor=black)](https://github.com/iricigor/InstallModuleFromGit/issues/new)
+![GitHub open issues](https://img.shields.io/github/issues/iricigor/InstallModuleFromGit.svg?style=flat)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/iricigor/InstallModuleFromGit.svg?style=flat)
 
 If you want to contribute, please fork the code and make a new PR after!
 
