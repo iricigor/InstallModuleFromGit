@@ -56,7 +56,7 @@ if ($Env:TF_BUILD -eq 'True') {
 "Removing not needed files"
 $pwdLength = $Destination2.Length + 1
 foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
-    #"Checking files like $line"
+    "Checking files like $line"
     foreach ($file in (Get-ChildItem -Path $Destination2 -Recurse -Force -File)) {
         $relativeName = $file.FullName.Substring($pwdLength) -replace '\\','/'
         #"$relativeName"
