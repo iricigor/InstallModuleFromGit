@@ -63,6 +63,16 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 }
 
 # publish
-Read-Host "All prerequisites check. Press Enter to Publish module or Ctrl+C to abort"
-Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
-"Module $ModuleName published to PowerShell Gallery"
+if ($TF_BUILD) {
+    if ($Env:ModuleVersionToPublish -eq $Module.Version) {
+        Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
+        "Module $ModuleName published to PowerShell Gallery"    
+    } else {
+        "Mismatching module versions $($Env:ModuleVersionToPublish) and $($Module.Version), please update pipeline variable ModuleVersionToPublish"
+    }
+} else {
+    Read-Host "All prerequisites check. Press Enter to Publish module or Ctrl+C to abort"
+    Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
+    "Module $ModuleName published to PowerShell Gallery"
+}
+
