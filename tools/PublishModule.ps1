@@ -46,7 +46,8 @@ $Destination2 = Join-Path $Destination $ModuleName
 "Copying to $Destination2"
 if (Test-Path $Destination2) {Remove-Item $Destination2 -Recurse -Force}
 if ($Env:TF_BUILD -eq 'True') {
-    Copy-Item -Path .\* -Destination "$Destination2\*" -Recurse # it creates folder $ModuleName    
+    New-Item -Path $Destination2 -ItemType Directory | Out-Null
+    Get-ChildItem -Force | Copy-Item -Destination $Destination2 -Container -Recurse
 } else {
     Copy-Item -Path . -Destination $Destination -Recurse # it creates folder $ModuleName
 }
