@@ -31,7 +31,7 @@ if (Find-Module -Name $ModuleName -RequiredVersion ($Module.Version) -Repository
     "No module with version $($Module.Version) found online"
 }
 
-# get nuget key from somewhere?
+if ($Env:NugetKey) {$NugetKey = $Env:NugetKey}
 if ($NugetKey) {
     "NugetKey found"
 } else {
