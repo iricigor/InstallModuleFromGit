@@ -1,7 +1,8 @@
-# Script should be executed manually by developer
-$ModuleName = 'InstallModuleFromGit'
-$InVSTS = [bool]($Env:TF_BUILD -eq 'True')
+#
+# Script should be executed inside of VSTS pipeline
+#
 
+$ModuleName = 'InstallModuleFromGit'
 
 if ($Env:TF_BUILD -ne 'True') {
     throw 'This script should be executed only from VSTS. Please use the other publishing script.'
