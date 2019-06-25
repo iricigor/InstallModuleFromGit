@@ -82,7 +82,7 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 "Publishing total of $((Get-ChildItem $Destination2 -Recurse -File).Count) files"
 Get-ChildItem $Destination2 -Recurse -File
 if ($Env:ModuleVersionToPublish -eq $Module.Version) {
-    Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
+    Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $Env:NugetKey -Verbose
     "Module $ModuleName published to PowerShell Gallery"    
 } else {
     throw "Mismatching module versions $($Env:ModuleVersionToPublish) and $($Module.Version), please update pipeline variable ModuleVersionToPublish"

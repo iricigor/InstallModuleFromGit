@@ -78,5 +78,5 @@ foreach ($line in (Get-Content '.publishignore'| where {$_ -notlike '#*'})) {
 # publish
 "Publishing total of $((Get-ChildItem $Destination2 -Recurse -File).Count) files"
 Read-Host "All prerequisites check. Press Enter to Publish module or Ctrl+C to abort"
-Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $Env:NugetKey -Verbose
+Publish-Module -Path $Destination2 -Repository PSGallery -NuGetApiKey $NugetKey -Verbose
 "Module $ModuleName published to PowerShell Gallery"
