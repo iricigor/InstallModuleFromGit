@@ -30,7 +30,7 @@ Author = 'iricigor@outlook.com'
 # Copyright = '(c) 2019 Igor. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Installs module from Git repository (i.e. GitHUb or Azure DevOps)'
+Description = 'Installs module from Git repository (i.e. GitHub or Azure DevOps aka VSTS)'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''

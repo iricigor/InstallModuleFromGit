@@ -4,5 +4,6 @@ PesterTestResults.xml
 tools/*
 Tests/*
 img/*
-Docs/*.md
+Docs/*
 cab/*
+en-US/InstallModuleFromGit-help.xml
