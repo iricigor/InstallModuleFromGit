@@ -1,9 +1,12 @@
 # Script should be executed manually by developer
 $ModuleName = 'InstallModuleFromGit'
-$InVSTS = [bool]($Env:TF_BUILD -eq 'True')
+
+if ($Env:TF_BUILD -eq 'True') {
+    throw 'This script should not be executed from VSTS. Please use dedicated script for that.'
+}
 
 # check running folder
-if ((Test-Path "..\$ModuleName\$ModuleName.psd1") -or ((Test-Path "..\s\$ModuleName.psd1"))) {
+if (Test-Path "..\$ModuleName\$ModuleName.psd1") {
     "Checking module $(Resolve-Path ".\$ModuleName.psd1")"
 } else {
     throw "We are not in correct folder, please run this tool as .\tools\PublishModule.ps1"
@@ -33,7 +36,6 @@ if (Find-Module -Name $ModuleName -RequiredVersion ($Module.Version) -Repository
 }
 
 # get publishing key from pipeline or directly
-if ($Env:NugetKey) {$NugetKey = $Env:NugetKey}
 if ($NugetKey) {
     "NugetKey found"
 } else {
