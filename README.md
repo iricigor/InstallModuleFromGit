@@ -81,7 +81,7 @@ Update-Help -Module InstallModuleFromGit -Force
 
 :smirk: Module has testing against two platforms - Linux and Windows. Code is verified before and after merging to master branch. Tests results are available on the Tests tab ([example here](/img/TestResults-AzureDevops.png)).
 
-[![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/16.svg?style=popout&logo=Windows&logoColor=blue)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master) [![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/17.svg?style=popout&logo=Linux&logoColor=black)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
+![supported-OS](https://img.shields.io/powershellgallery/p/InstallModuleFromGit.svg?style=popout&logo=PowerShell) [![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/16.svg?style=popout&logo=Windows&logoColor=blue)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=16&branchName=master) [![test-details](https://img.shields.io/azure-devops/tests/iiric/PS1/17.svg?style=popout&logo=Linux&logoColor=black)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=17&branchName=master)
 
 _Click on images to see details about the latest build runs._
 
