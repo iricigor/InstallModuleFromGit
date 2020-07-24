@@ -8,10 +8,14 @@ param (
     [string]$TestsToRun
 )
 
-function InstallModule ([string]$Name,[version]$Version){
+function InstallModule ([string]$Name,[version]$Version,[version]$MaxVersion=$null){
     if (!(Get-Module $Name -List | where Version -ge $Version)) {
         Write-Host "Installing $Name"
-        Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
+        if ($MaxVersion) {
+            Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery -MaximumVersion $MaxVersion
+        } else {
+            Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
+        }
         Import-Module $Name
     }
     if ($env:TF_BUILD) {Get-Module $Name -List}
@@ -32,7 +36,7 @@ if ($env:TF_BUILD) {
 # Install Pester and Platy, if needed
 #
 
-InstallModule Pester '4.0.0'
+InstallModule Pester '4.0.0' '4.99'
 InstallModule PlatyPS '0.14.0'
 InstallModule PSScriptAnalyzer '1.17.0'
 
