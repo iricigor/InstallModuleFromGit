@@ -9,11 +9,15 @@ param (
 )
 
 function InstallModule ([string]$Name,[version]$Version,[version]$MaxVersion=$null){
-    if (!(Get-Module $Name -List | where Version -ge $Version)) {
-        Write-Host "Installing $Name"
-        if ($MaxVersion) {
+    if ($MaxVersion) {
+        if (!(Get-Module $Name -List | where Version -ge $Version | where Version -le $MaxVersion)) {
+            Write-Host "Installing $Name with Max Version $MaxVersion"
             Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery -MaximumVersion $MaxVersion
-        } else {
+        }
+        Import-Module $Name -MaximumVersion $MaxVersion
+    } else {
+        if (!(Get-Module $Name -List | where Version -ge $Version)) {
+            Write-Host "Installing $Name"
             Install-Module -Name $Name -Force -SkipPublisherCheck -Scope CurrentUser -Repository PSGallery
         }
         Import-Module $Name
