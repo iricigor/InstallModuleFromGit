@@ -31,7 +31,7 @@ function InstallModule ([string]$Name,[version]$Version,[version]$MaxVersion=$nu
 
 if ($env:TF_BUILD) {
     $PSVersionTable
-    Get-ChildItem Env:\   
+    Get-ChildItem Env:\
     $Env:PSModulePath -split (';:'[[int]($IsLinux -or $IsMacOS)])
     Get-Module -ListAvailable | Format-Table -Property ModuleType, Name, Version
 }
@@ -57,7 +57,7 @@ switch ($TestsToRun) {
     'FunctionalityOnly' { $Tags = @('Functionality','Other') }
     'DocumentationOnly' { $Tags = @('Documentation','Other') }
     'All' { $Tags = @('Documentation','Functionality','Other') }
-} 
+}
 
 Write-Host "Run Pester tests"
 $Result = Invoke-Pester -Path "$tests/module", "$tests/functions" -Tag $Tags -PassThru -OutputFile PesterTestResults.xml
