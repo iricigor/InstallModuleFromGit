@@ -38,7 +38,7 @@ Describe 'Proper Module Declaration' -Tag 'Documentation' {
 
     $ModuleManifest = Test-ModuleManifest $ModuleManifestFile
     $ModuleVersion = $ModuleManifest.Version
-    It 'Module version must be x.y.z' {        
+    It 'Module version must be x.y.z' {
         ($ModuleVersion.ToString() -split '\.').Count -ge 3 | Should -Be $true -Because "Module with version $ModuleVersion cannot exist online"
     }
 

@@ -3,13 +3,13 @@ function Update-GitModule {
     [CmdletBinding(HelpUri='https://github.com/iricigor/InstallModuleFromGit/blob/master/Docs/Update-GitModule.md')]
 
     param (
-        
-        
+
+
         [Parameter(Mandatory,ValueFromPipelineByPropertyName,Position=0,ParameterSetName='ByUri')]
         [string[]]$ProjectUri,
         # https://github.com/dfinke/InstallModuleFromGitHub
         # https://github.com/iricigor/FIFA2018
-        
+
         [Parameter(Mandatory,ParameterSetName='ByName')]
         [string[]]$Name,
 
@@ -29,10 +29,10 @@ function Update-GitModule {
         }
 
         if ($env:AGENT_TEMPDIRECTORY) {
-            $tmpRoot = $env:AGENT_TEMPDIRECTORY    
+            $tmpRoot = $env:AGENT_TEMPDIRECTORY
         } else {
             $tmpRoot = [System.IO.Path]::GetTempPath()
-        }        
+        }
 
         if ($Name) {$ProjectUri = ConvertTo-Uri -Name $Name}
 
@@ -51,7 +51,10 @@ function Update-GitModule {
             # TODO: continue only after cleanup!
 
             # Check version, and if higher install it
-            $AllModules = @((Get-Module -Name $ModuleName -ListAvailable),(Get-InstalledModule -Name $ModuleName)) | Select Name, Version
+            $AllModules = @(
+                (Get-Module -Name $ModuleName -ListAvailable),
+                (Get-InstalledModule -Name $ModuleName -ErrorAction SilentlyContinue)
+            ) | Select Name, Version
             $LocalModuleInfo = $AllModules | Sort-Object Version -Descending | Select -First 1
             if (!$LocalModuleInfo) {
                 Write-Error "$FunctionName cannot find local module '$ModuleName'"
@@ -62,7 +65,6 @@ function Update-GitModule {
             } else {
                 Install-ModuleInfo -ModuleInfo $RemoteModuleInfo -DestinationPath $DestinationPath -Force:$Force
             }
-            
         }
     }
 
