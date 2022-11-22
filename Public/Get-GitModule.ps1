@@ -46,6 +46,8 @@ function Get-GitModule {
             $ModuleName = ($P1 -split '/')[-1]
             $tempDir = Join-Path $tmpRoot $ModuleName
             if (!(Test-Path $tempDir)) {
+                # Strip .git from variables if a directory that ends with .git isn't located (backwards compatibility)
+                if ($tempDir.EndsWith('.git')) { $ModuleName = $ModuleName.Substring(0,$ModuleName.Length-4) }
                 Write-Verbose -Message "$(Get-Date -f T)   creating directory $tempDir"
                 New-Item $tempDir -ItemType Directory -Force | Out-Null
             } elseif (Get-ChildItem $tempDir -Force) {
